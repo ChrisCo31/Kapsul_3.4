@@ -1,0 +1,15 @@
+{% extends '@CTSKapsBundle/layout.html.twig' %}
+ {% block content %}
+    {% block identity %}
+     <div class="identity">
+         <h2>Nom de la revue</h2>
+         <p> Reprendre les differents éléments entrer en base de données (entite Review) </p>
+     </div>
+    {% endblock %}
+     {% block articles %}
+             <div class="well-lg">
+                 <h2>Liste des articles en base</h2>
+                 <p> utilisation du service de scraping</p>
+             </div>
+     {% endblock %}
+ {% endblock %}

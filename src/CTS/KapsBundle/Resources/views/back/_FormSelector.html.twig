@@ -1,0 +1,64 @@
+{% extends '@CTSKapsBundle/layout.html.twig' %}
+ {% block content %}
+     {% block form %}
+
+         <div class="container">
+
+             <h4>Sélecteurs pour scraper la page d'accueil de la revue  : </h4>
+             <p> correspondant à </p>
+             <div class="row">
+
+                 {{ form_start(form) }}
+
+                 <div class="row">
+
+                     <p> {{ form_label(form.selectorTitle) }}
+                         {{ form_widget(form.selectorTitle) }}
+                     </p>
+                 </div>
+                 <div class="row">
+                     <p>
+                         {{ form_label(form.selectorExcerpt) }}
+                         {{ form_widget(form.selectorExcerpt) }}
+                     </p>
+                 </div>
+                 <div class="row">
+                     <p>
+                         {{ form_label(form.selectorTag) }}
+                         {{ form_widget(form.selectorTag) }}
+                     </p>
+                 </div>
+                 <div class="row">
+
+                     <p> {{ form_label(form.selectorDate) }}
+                         {{ form_widget(form.selectorDate) }}
+                     </p>
+                 </div>
+                 <div class="row">
+
+                     <p> {{ form_label(form.selectorLink) }}
+                         {{ form_widget(form.selectorLink) }}
+                     </p>
+                 </div>
+                 <div class="row">
+                     <p>
+                         {{ form_label(form.selectorImg) }}
+                         {{ form_widget(form.selectorImg) }}
+                     </p>
+                 </div>
+
+                 {{ form_rest(form) }}
+                 {{ form_end(form) }}
+             </div>
+         </div>
+     {% endblock %}
+     {% block two %}
+
+
+     {% endblock %}
+ {% endblock %}
+
+
+
+
+

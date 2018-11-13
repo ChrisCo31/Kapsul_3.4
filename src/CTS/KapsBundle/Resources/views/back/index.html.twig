@@ -1,0 +1,23 @@
+{% extends '@CTSKapsBundle/layout.html.twig' %}
+ {% block content %}
+     {% block option %}
+         <div class="well">
+         <h2>Liste des medias en base</h2>
+
+         {% for media in listMedia %}
+             <h3> - {{ media.name }}
+
+             <a class="btn btn-warning btn-sm" href ="{{ path('Back_selector', {'id': media.id})}}"> Mettre a jour</a>
+             <a class="btn btn-warning btn-sm" href ="{{ path('Back_selector', {'id': media.id})}}"> Supprimer</a>
+             <a class="btn btn-warning btn-sm" href ="{{ path('Back_selector', {'id': media.id})}}"> Entrer les Selecteurs</a>
+             <a class="btn btn-warning btn-sm" href ="{{ path('Back_scrap', {'id': media.id})}}"> Scraper</a>
+             </h3>
+
+         {% endfor %}
+         </div>
+
+     {% endblock %}
+    {% block form %}
+         {% include '@CTSKapsBundle/back/_FormMedia.html.twig' %}
+    {% endblock %}
+ {% endblock %}
