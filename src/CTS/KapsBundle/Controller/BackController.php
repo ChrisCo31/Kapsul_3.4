@@ -13,6 +13,7 @@ namespace CTS\KapsBundle\Controller;
 use CTS\KapsBundle\CTSKapsBundle;
 use CTS\KapsBundle\Entity\Media;
 use CTS\KapsBundle\Entity\Selector;
+use CTS\KapsBundle\Entity\Tag;
 use CTS\KapsBundle\Form\MediaSelectorType;
 use CTS\KapsBundle\Form\MediaType;
 use CTS\KapsBundle\Form\SelectorType;
@@ -34,6 +35,14 @@ class BackController extends Controller
         $listMedia = $em->getRepository('CTSKapsBundle:Media')->findAll();
 
         $media = new Media();
+
+        $tag1 = new Tag ();
+        $tag1 -> setName ( 'tag1' );
+        $media -> getTags () -> add ( $tag1 );
+        $tag2 = new Tag ();
+        $tag2 -> setName ( 'tag2' );
+        $media -> getTags () -> add ( $tag2 );
+
         $form = $this->createForm(MediaType::class, $media);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
@@ -89,14 +98,14 @@ class BackController extends Controller
         // 2. Call scraping service
         $scraping = $this->get('cts_kaps.Scraping');
        // 3. Execute scraping service
-        $results = $scraping->executeScraping($url, $media);
+        $result = $scraping->executeScraping($url, $media);
         // 4. Persist results in "Article"
 
         // 5. Message de reussite
 
 
         // 6. Render twig file
-        return $this->render('@CTSKapsBundle/back/scrap.html.twig');
+        return $this->render('@CTSKapsBundle/back/scrap.html.twig', ['result' => $result]);
 
     }
 

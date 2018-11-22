@@ -82,11 +82,9 @@ class MediaType extends AbstractType
                 'label' => 'Image : ',
                 'required' => false])
 
-            ->add('themes', CollectionType::class, [
-                'entry_type' => ThemeType::class,
-                'allow_add'  => true,
-                'allow_delete' => true,
-                'label' => 'Test : ',
+            ->add('tags', CollectionType::class, [
+                'entry_type' => TagType::class,
+                'entry_options' => array ( 'label' => false ),
             ])
 
             ->add('save', SubmitType::class, [

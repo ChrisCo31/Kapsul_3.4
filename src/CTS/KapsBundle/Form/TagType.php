@@ -7,7 +7,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ThemeType extends AbstractType
+class TagType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -16,7 +16,7 @@ class ThemeType extends AbstractType
     {
         $builder
             ->add('tag', TextType::class, [
-                'label' => 'Theme : '
+                'label' => 'Tag : '
             ]);
     }/**
      * {@inheritdoc}
@@ -24,7 +24,7 @@ class ThemeType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'CTS\KapsBundle\Entity\Theme'
+            'data_class' => 'CTS\KapsBundle\Entity\Tag'
         ));
     }
 
@@ -33,7 +33,7 @@ class ThemeType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'cts_kapsbundle_theme';
+        return 'cts_kapsbundle_tag';
     }
 
 

@@ -62,10 +62,21 @@
                 </p>
 
             </div>
+
+            <div class="row">
+                <h3> Tags </h3>
+                <ul class= "tags" >
+                    {# iterate over each existing tag and render its only field: name #}
+                    {% for tag in form.tags %}
+                        <li> {{ form_row ( tag.tag ) }} </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
             <div class="row">
                 <p>
-                    {{ form_label(form.themes) }}
-                    {{ form_widget(form.themes) }}
+                    {{ form_label(form.tags) }}
+                    {{ form_widget(form.tags) }}
                     <a href="#" id="add_tag" class="btn btn-default">Ajouter un tag</a>
                 </p>
 
