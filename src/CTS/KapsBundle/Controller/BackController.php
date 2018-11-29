@@ -11,6 +11,7 @@ namespace CTS\KapsBundle\Controller;
 
 
 use CTS\KapsBundle\CTSKapsBundle;
+use CTS\KapsBundle\Entity\Article;
 use CTS\KapsBundle\Entity\Media;
 use CTS\KapsBundle\Entity\Selector;
 use CTS\KapsBundle\Entity\Tag;
@@ -97,15 +98,14 @@ class BackController extends Controller
         $url = $media->getUrl();
         // 2. Call scraping service
         $scraping = $this->get('cts_kaps.Scraping');
-       // 3. Execute scraping service
-        $result = $scraping->executeScraping($url, $media);
-        // 4. Persist results in "Article"
+       // 3. Execute scraping service and return an object array
+        $scraping->executeScraping($url, $media);
+        // 4. Persist results
 
-        // 5. Message de reussite
-
+        // 5. success message
 
         // 6. Render twig file
-        return $this->render('@CTSKapsBundle/back/scrap.html.twig', ['result' => $result]);
+        return $this->render('@CTSKapsBundle/back/scrap.html.twig');
 
     }
 

@@ -13,11 +13,13 @@ use Doctrine\ORM\Mapping as ORM;
 class Tag
 {
     /**
-
-     * @ORM\ManyToMany(targetEntity="CTS\KapsBundle\Entity\Media", inversedBy="tags")
-
+     * @ORM\ManyToMany(targetEntity="CTS\KapsBundle\Entity\Article", inversedBy="tags")
      * @ORM\JoinColumn(nullable=false)
-
+     */
+    private $article;
+    /**
+     * @ORM\ManyToMany(targetEntity="CTS\KapsBundle\Entity\Media", inversedBy="tags")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $media;
     /**

@@ -13,11 +13,13 @@ use Doctrine\ORM\Mapping as ORM;
 class Tag
 {
     /**
-
-     * @ORM\ManyToMany(targetEntity="CTS\KapsBundle\Entity\Media", inversedBy="tags")
-
+     * @ORM\ManyToMany(targetEntity="CTS\KapsBundle\Entity\Article", inversedBy="tags")
      * @ORM\JoinColumn(nullable=false)
-
+     */
+    private $article;
+    /**
+     * @ORM\ManyToMany(targetEntity="CTS\KapsBundle\Entity\Media", inversedBy="tags")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $media;
     /**
@@ -111,5 +113,39 @@ class Tag
     public function getMedia()
     {
         return $this->media;
+    }
+
+    /**
+     * Add article
+     *
+     * @param \CTS\KapsBundle\Entity\Article $article
+     *
+     * @return Tag
+     */
+    public function addArticle(\CTS\KapsBundle\Entity\Article $article)
+    {
+        $this->article[] = $article;
+
+        return $this;
+    }
+
+    /**
+     * Remove article
+     *
+     * @param \CTS\KapsBundle\Entity\Article $article
+     */
+    public function removeArticle(\CTS\KapsBundle\Entity\Article $article)
+    {
+        $this->article->removeElement($article);
+    }
+
+    /**
+     * Get article
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getArticle()
+    {
+        return $this->article;
     }
 }

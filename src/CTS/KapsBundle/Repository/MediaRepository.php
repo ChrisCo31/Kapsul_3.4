@@ -10,5 +10,13 @@ namespace CTS\KapsBundle\Repository;
  */
 class MediaRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findLast()
+    {
+        $queryBuilder=$this->createQueryBuilder('m');
+        $queryBuilder
+            ->orderBy('m.createdAt', 'DESC')
+            ->setMaxResults(3);
+            return $queryBuilder->getQuery()->getResult();
+    }
 
 }

@@ -10,18 +10,24 @@ namespace CTS\KapsBundle\Services;
 
 
 use CTS\KapsBundle\Entity\Article;
+use CTS\KapsBundle\Entity\Picture;
+use CTS\KapsBundle\Entity\Tag;
+use Doctrine\ORM\EntityManager;
 use Goutte\Client;
 use GuzzleHttp\Client as GuzzleClient;
 use CTS\KapsBundle\Entity\Media;
 use CTS\KapsBundle\Entity\Selector;
 
+
 class Scraping
 {
     private $client;
+    private $em;
 
-    public function __construct()
+    public function __construct(EntityManager $em)
     {
         $this->client = new Client();
+        $this->em = $em;
     }
     /**
      * @param $url
@@ -31,66 +37,85 @@ class Scraping
     {
         // Retrieve css selectors
         $selectors = $media->getSelectors();
-
         foreach ($selectors as $selector)
         {
             $selectorTitle = $selector->getSelectorTitle();
             $selectorExcerpt = $selector->getSelectorExcerpt();
+            $selectorTag = $selector->getSelectorTag();
             $selectorLink = $selector->getSelectorLink();
+            $selectorImg = $selector->getSelectorImg();
         }
-
         // Scraping
-
         $crawler = $this->client->request('GET', $url);
+        // Retrieve Picture
+        $i = $crawler
+            ->filterXPath($selectorImg)
+            ->extract(array('src', 'alt'));
+        $result['image'] = $i;
 
-        // Scrap article titles
-        $crawler
-            ->filter("$selectorTitle")
-            ->each(function($node) use (&$titles)
-            {
-                $title= $node->text();
-                $titles[] = $title;
-        		echo "<br/>";
-            });
-        $result['title'] = $titles;
-        //var_dump($result);
-
-        // Scrap article excerpts
-        $crawler->filter($selectorExcerpt)->each(function ($node) use (&$excerpts) {
-            $excerpt = $node->text();
-            $excerpts[]= $excerpt;
-            return $excerpts;
-        });
-        $result['excerpt'] = $excerpts;
-        //var_dump($result);
-
-        // Scrap article links
-        $links = $crawler->filter($selectorLink)->links();
-        foreach ($links as $link) {
-            $link = $link->getUri();
-            $linkS[] = $link;
+        // Retrieve Title
+        $t = $crawler
+            ->filterXPath($selectorTitle)
+            ->extract(array('_text'));
+        $result['title'] = $t;
+        // Retrieve Tag
+        $w = $crawler
+            ->filterXPath($selectorTag)
+            ->extract(array('_text'));
+        $result['tag'] = $w;
+        /*
+        foreach($result['tag'] as $key => $tag)
+        {
+            $words = preg_split('/#/', $tag, -1, PREG_SPLIT_NO_EMPTY);
+            $newResults[] = $words;
         }
-        $result['link'] = $linkS;
-        var_dump($result);
+        var_dump($newResults);
+        */
+        // Retrieve Excerpt
+        $e = $crawler
+            ->filterXPath($selectorExcerpt)
+            ->extract(array('_text'));
+        $result['excerpt'] = $e;
+        // Retrive Link
+        $a = $crawler
+            ->filterXPath($selectorLink)
+            ->extract(array('href'));
+        $result['link'] = $a;
 
-        foreach($result['title'] as $key => $title) {
+        //var_dump($result);
 
+
+        foreach($result['title'] as $key => $title)
+        {
+            // Fill attributes
             $article = new Article();
             $article->setTitle($title);
             $article->setExcerpt($result['excerpt'][$key]);
             $article->setUrl($result['link'][$key]);
-            $articles[] = $article;
+            $article->setDate(new \DateTime());
 
-	   }
-        var_dump($articles);
+            $picture = new Picture();
+            $picture->setSrc($result['image'][$key][0]);
+            $picture->setAlt('ImageArticle');
+            $article->setPicture($picture);
+
+            $tag = new Tag();
+            var_dump($tag);
+            $tag->setName($result['tag'][$key]);
+            var_dump($tag);
+            $article->addTag($tag);
+
+            $article->setMedia($media);
+            //var_dump($article);
+            $exist = $this->em->getRepository('CTSKapsBundle:Article')->findOneBy(['title' => $article->getTitle()]);
+
+            //check if db is null or contains already the scrap title of the article.
+            if( $exist==null || !$exist->getTitle())
+            {
+                // Persist
+                $this->em->persist($article);
+                $this->em->flush();
+            }
+	    }
     }
-
 }
-
-/*
- * $result =  array(
-   						'title'   => array($title1, $title2, $title3),
-    		  			'excerpt' => array($excerpt1, $excerpt2, $excerpt3),
-    		  			'link'    => array($link1, $link2, $link3),
-    		  )
- */

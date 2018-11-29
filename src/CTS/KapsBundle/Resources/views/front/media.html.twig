@@ -1,69 +1,15 @@
 {% extends '@CTSKapsBundle/layout.html.twig' %}
  {% block content %}
-     {% block one %}
-         <div class="row">
-             <h2>Outils de tri des revues</h2>
-             <ul> Faire un form (ChoiceType) qui permettent de classer les revues
-                 <li> par nom/inverse</li>
-                 <li> par date d'entrée en base</li>
-                 <li>par périodicité</li>
-             </ul>
-             <p> Ajout egalement avec proposition des objets Review avec la methode getName cf
-                  : <a class="ref" href="https://symfony.com/doc/current/reference/forms/types/choice.htm">Docs</a></p>
-
-         </div><!-- /.row -->
-     {% endblock %}
-     {% block two %}
-         <div class="row">
-         <div class="catalog">
-             <div class="row">
-                 <div class="col-lg-4">
-                     <img class="img" src="#" alt="#" width="140" height="140">
-                     <h2>Nom de la revue</h2>
-                     <p>Usbek & Rica est un magazine trimestriel français de journalisme de récit, fondé en 2010 par Jérôme Ruskin.
-                         Il s'est donné comme slogan « Le magazine qui explore le futur » et s'inscrit dans le champ de la prospective..</p>
-                     <p><a class="btn btn-default" href="{{ path('Front_medias') }}">Details</a></p>
-                 </div><!-- /.col-lg-4 -->
-                 <div class="col-lg-4">
-                     <img class="img" src="#" alt="#" width="140" height="140">
-                     <h2>Nom de la revue</h2>
-                     <p>Usbek & Rica est un magazine trimestriel français de journalisme de récit, fondé en 2010 par Jérôme Ruskin.
-                         Il s'est donné comme slogan « Le magazine qui explore le futur » et s'inscrit dans le champ de la prospective..</p>
-                     <p><a class="btn btn-default" href="#" role="button">En détails</a></p>
-                 </div><!-- /.col-lg-4 -->
-                 <div class="col-lg-4">
-                     <img class="img" src="#" alt="#" width="140" height="140">
-                     <h2>Nom de la revue</h2>
-                     <p>Usbek & Rica est un magazine trimestriel français de journalisme de récit, fondé en 2010 par Jérôme Ruskin.
-                         Il s'est donné comme slogan « Le magazine qui explore le futur » et s'inscrit dans le champ de la prospective..</p>
-                     <p><a class="btn btn-default" href="#" role="button">En détails</a></p>
-                 </div><!-- /.col-lg-4 -->
-             </div><!-- /.row -->
-                 <div class="row">
-                     <div class="col-lg-4">
-                         <img class="img" src="#" alt="#" width="140" height="140">
-                         <h2>Nom de la revue</h2>
-                         <p>Usbek & Rica est un magazine trimestriel français de journalisme de récit, fondé en 2010 par Jérôme Ruskin.
-                             Il s'est donné comme slogan « Le magazine qui explore le futur » et s'inscrit dans le champ de la prospective..</p>
-                         <p><a class="btn btn-default" href="#" role="button">En détails</a></p>
-                     </div><!-- /.col-lg-4 -->
-                     <div class="col-lg-4">
-                         <img class="img" src="#" alt="#" width="140" height="140">
-                         <h2>Nom de la revue</h2>
-                         <p>Usbek & Rica est un magazine trimestriel français de journalisme de récit, fondé en 2010 par Jérôme Ruskin.
-                             Il s'est donné comme slogan « Le magazine qui explore le futur » et s'inscrit dans le champ de la prospective..</p>
-                         <p><a class="btn btn-default" href="#" role="button">En détails</a></p>
-                     </div><!-- /.col-lg-4 -->
-                     <div class="col-lg-4">
-                         <img class="img" src="#" alt="#" width="140" height="140">
-                         <h2>Nom de la revue</h2>
-                         <p>Usbek & Rica est un magazine trimestriel français de journalisme de récit, fondé en 2010 par Jérôme Ruskin.
-                             Il s'est donné comme slogan « Le magazine qui explore le futur » et s'inscrit dans le champ de la prospective..</p>
-                         <p><a class="btn btn-default" href="#" role="button">En détails</a></p>
-                     </div><!-- /.col-lg-4 -->
-                 </div><!-- /.row -->
+    {% block identity %}
+     <div class="identity">
+         <h2>Nom de la revue</h2>
+         <p> Reprendre les differents éléments entrer en base de données (entite Review) </p>
+     </div>
+    {% endblock %}
+     {% block articles %}
+             <div class="well-lg">
+                 <h2>Liste des articles en base</h2>
+                 <p> utilisation du service de scraping</p>
              </div>
-         </div>
-
      {% endblock %}
  {% endblock %}

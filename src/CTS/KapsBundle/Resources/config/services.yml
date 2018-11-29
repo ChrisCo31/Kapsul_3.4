@@ -2,6 +2,7 @@ services:
 
     cts_kaps.Scraping:
         class: CTS\KapsBundle\Services\Scraping
+        arguments: ["@doctrine.orm.entity_manager"]
 
 
 

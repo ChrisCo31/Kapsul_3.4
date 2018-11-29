@@ -9,6 +9,7 @@
 namespace CTS\KapsBundle\Controller;
 
 
+use CTS\KapsBundle\Repository\MediaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,9 +25,14 @@ class FrontController extends Controller
      *
      * @route("/", name="Front_home")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        return $this->render('@CTSKapsBundle/front/index.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $medias = $em->getRepository('CTSKapsBundle:Media')->findLast();
+        //$medias = $repository->findLast();
+        return $this->render('@CTSKapsBundle/front/index.html.twig', [
+            'medias' => $medias
+        ]);
     }
 
     /**
@@ -36,18 +42,18 @@ class FrontController extends Controller
      */
     public function discoverAction(Request $request)
     {
-        return $this->render('@CTSKapsBundle/front/media.html.twig');
+        return $this->render('@CTSKapsBundle/front/medias.html.twig');
 
     }
 
     /**
-     * Matches /medias/articles
+     * Matches /media/*
      *
-     * @route("/medias/articles", name="Front_articles")
+     * @route("/media/{id}", name="Front_oneMedia")
      */
-    public function discoverArticlesAction()
+    public function discoverOneMediaAction()
     {
-        return $this->render('@CTSKapsBundle/front/article.html.twig');
+        return $this->render('@CTSKapsBundle/front/media.html.twig');
     }
 
     /**
