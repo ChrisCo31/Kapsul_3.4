@@ -27,7 +27,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class BackController extends Controller
 {
     /**
-     * Matches /admin
      * @route("/admin", name="Back_admin")
      */
     public function manageAction(Request $request)
@@ -36,13 +35,6 @@ class BackController extends Controller
         $listMedia = $em->getRepository('CTSKapsBundle:Media')->findAll();
 
         $media = new Media();
-
-        $tag1 = new Tag ();
-        $tag1 -> setName ( 'tag1' );
-        $media -> getTags () -> add ( $tag1 );
-        $tag2 = new Tag ();
-        $tag2 -> setName ( 'tag2' );
-        $media -> getTags () -> add ( $tag2 );
 
         $form = $this->createForm(MediaType::class, $media);
         $form->handleRequest($request);
@@ -55,7 +47,6 @@ class BackController extends Controller
         return $this->render('@CTSKapsBundle/back/index.html.twig', ['form' => $form->createView(), 'listMedia' => $listMedia]);
     }
     /**
-     * Matches /selector/*
      * @route("/selector/{id}", name="Back_selector")
      */
     public function selectorAction(Request $request, $id)
@@ -85,8 +76,6 @@ class BackController extends Controller
     }
 
     /**
-     * Matches /scrap/*
-     *
      * @route("/scrap/{id}", name="Back_scrap")
      */
     public function scrapingAction(Request $request,$id)
@@ -110,7 +99,6 @@ class BackController extends Controller
     }
 
     /**
-     * Matches /connexion
      * @route("/connexion", name="Back_connexion")
      */
     public function connectAction()
@@ -120,7 +108,6 @@ class BackController extends Controller
     }
 
     /**
-     * Matches /register
      * @route("/register", name="Back_register")
      */
     public function registerAction()
@@ -130,7 +117,6 @@ class BackController extends Controller
     }
 
     /**
-     * Matches /myspace
      * @route("/myspace", name="Back_mySpace")
      */
     public function mySpaceAction()

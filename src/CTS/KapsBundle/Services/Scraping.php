@@ -19,6 +19,7 @@ use CTS\KapsBundle\Entity\Media;
 use CTS\KapsBundle\Entity\Selector;
 
 
+
 class Scraping
 {
     private $client;
@@ -63,28 +64,37 @@ class Scraping
             ->filterXPath($selectorTag)
             ->extract(array('_text'));
         $result['tag'] = $w;
-        /*
+        
         foreach($result['tag'] as $key => $tag)
         {
             $words = preg_split('/#/', $tag, -1, PREG_SPLIT_NO_EMPTY);
             $newResults[] = $words;
         }
-        var_dump($newResults);
-        */
+        foreach($newResults as $values)
+        { 
+            foreach($values as $key => $value)
+            {
+            
+                $resultat[]=$value;
+            }
+        }
+        //var_dump($resultat);
+        $result['tag'] = $resultat;
+        //var_dump($result);        
         // Retrieve Excerpt
         $e = $crawler
             ->filterXPath($selectorExcerpt)
             ->extract(array('_text'));
         $result['excerpt'] = $e;
-        // Retrive Link
+        // Retrieve Link
         $a = $crawler
             ->filterXPath($selectorLink)
             ->extract(array('href'));
         $result['link'] = $a;
 
         //var_dump($result);
-
-
+        
+        
         foreach($result['title'] as $key => $title)
         {
             // Fill attributes
@@ -99,14 +109,22 @@ class Scraping
             $picture->setAlt('ImageArticle');
             $article->setPicture($picture);
 
-            $tag = new Tag();
-            var_dump($tag);
-            $tag->setName($result['tag'][$key]);
-            var_dump($tag);
-            $article->addTag($tag);
-
             $article->setMedia($media);
-            //var_dump($article);
+
+            $keyTag = $key + $key;
+            
+            $tag1= new Tag();
+            $article->addTag($tag1);
+            $tag1->setName($result['tag'][$keyTag]);
+            $tag1->addArticle($article);
+            
+            //var_dump($tag1);
+            $tag2= new Tag();
+            $article->addTag($tag2);
+            $tag2->setName($result['tag'][$keyTag+1]);       
+            $tag2->addArticle($article);     
+            //var_dump($tag2);
+
             $exist = $this->em->getRepository('CTSKapsBundle:Article')->findOneBy(['title' => $article->getTitle()]);
 
             //check if db is null or contains already the scrap title of the article.
@@ -119,3 +137,5 @@ class Scraping
 	    }
     }
 }
+
+

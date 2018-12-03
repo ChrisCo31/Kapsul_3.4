@@ -98,6 +98,16 @@ class Media
     private $createdAt;
 
     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->selectors = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->createdAt = new \DateTime();
+    }
+
+    /**
      * Get id
      *
      * @return int
@@ -323,16 +333,6 @@ class Media
         return $this->picture;
     }
 
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->selectors = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
     /**
      * Add theme
      *
@@ -374,7 +374,7 @@ class Media
      *
      * @return Media
      */
-    public function addSelector(\AppBundle\Entity\Selector $selector)
+    public function addSelector(\CTS\KapsBundle\Entity\Selector $selector)
     {
         $this->selectors[] = $selector;
 
@@ -386,7 +386,7 @@ class Media
      *
      * @param \AppBundle\Entity\Selector $selector
      */
-    public function removeSelector(\AppBundle\Entity\Selector $selector)
+    public function removeSelector(\CTS\KapsBundle\Entity\Selector $selector)
     {
         $this->selectors->removeElement($selector);
     }

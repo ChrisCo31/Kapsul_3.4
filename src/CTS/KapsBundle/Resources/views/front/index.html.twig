@@ -1,7 +1,7 @@
 {% extends '@CTSKapsBundle/layout.html.twig' %}
  {% block content %}
-         <div class="container">
-             <h2> Dernieres entrées</h2>
+         <div class="container ">
+             <h2> Dernieres entrées : </h2>
              <div class="row flex">
                  {% for media in medias %}
                  <div class="col-lg-4">
@@ -12,7 +12,7 @@
                  {% endfor %}
              </div>
          </div>
-         <div class="container">
+         <div class="container text-center">
              <h2>les tendances du moment</h2>
              <h3> Descriptifs </h3>
              <p> Les tags apparaissent dans l'ordre alphabetique. Le taille varie selon la fréquence avec laquelle ils apparaissent

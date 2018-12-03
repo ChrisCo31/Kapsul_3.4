@@ -15,14 +15,13 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use CTS\KapsBundle\Services\Scraping;
+use CTS\KapsBundle\Entity\Tag;
 
 
 
 class FrontController extends Controller
 {
     /**
-     * Matches /
-     *
      * @route("/", name="Front_home")
      */
     public function indexAction(Request $request)
@@ -31,34 +30,63 @@ class FrontController extends Controller
         $medias = $em->getRepository('CTSKapsBundle:Media')->findLast();
         //$medias = $repository->findLast();
         return $this->render('@CTSKapsBundle/front/index.html.twig', [
+            'medias' => $medias,
+         ]);
+    }
+
+    /**
+     * @route("/medias", name="Front_medias")
+     */
+    public function showAllMediasAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $medias = $em->getRepository('CTSKapsBundle:Media')->findAll();
+        return $this->render('@CTSKapsBundle/front/medias.html.twig', [
             'medias' => $medias
+        ]);
+
+    }
+
+    /**
+     * @route("/media/{id}", name="Front_oneMedia")
+     */
+    public function showMediaAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $media = $em->getRepository('CTSKapsBundle:Media')->find($id);
+        $articles = $em->getRepository('CTSKapsBundle:Article')->findAll($media);
+        $picture =$media->getPicture();
+
+        return $this->render('@CTSKapsBundle/front/media.html.twig', [
+            'media' => $media,
+            'picture' => $picture,
+            'articles' => $articles
         ]);
     }
 
     /**
-     * Matches /medias
-     *
-     * @route("/medias", name="Front_medias")
+     * @route("/article", name="Front_showArticles")
      */
-    public function discoverAction(Request $request)
+    public function showArticle()
     {
-        return $this->render('@CTSKapsBundle/front/medias.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $article = $em->getRepository('CTSKapsBundle:Article')->find(217);
+
+        foreach($article->getTags() as $tag)
+        {
+            echo $tag->getName();
+        }
+        exit();
+        $tag = $em->getRepository('CTSKapsBundle:Tag')->findOneBy(['name' => 'espace']);
+        //var_dump($tag);
+        foreach($tag->getArticles() as $article)
+        {
+            echo $article->getTitle();
+        }
+        //var_dump($article->getTags());
 
     }
-
     /**
-     * Matches /media/*
-     *
-     * @route("/media/{id}", name="Front_oneMedia")
-     */
-    public function discoverOneMediaAction()
-    {
-        return $this->render('@CTSKapsBundle/front/media.html.twig');
-    }
-
-    /**
-     * Matches /search
-     *
      * @route("/search", name="Front_search")
      */
     public function searchAction()
@@ -67,8 +95,6 @@ class FrontController extends Controller
     }
 
     /**
-     * Matches /contact
-     *
      * @route("/contact", name="Front_contact")
      */
     public function contactAction()
@@ -77,8 +103,6 @@ class FrontController extends Controller
     }
 
     /**
-     * Matches /pickup
-     *
      * @route("/pickup", name="Front_pickup")
      */
     public function pickupAction()
@@ -87,8 +111,6 @@ class FrontController extends Controller
     }
 
     /**
-     * Matches /contribute
-     *
      * @route("/contribute", name="Front_contribute")
      */
     public function contributeAction()

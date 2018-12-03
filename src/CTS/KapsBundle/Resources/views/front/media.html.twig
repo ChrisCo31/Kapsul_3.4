@@ -1,15 +1,15 @@
 {% extends '@CTSKapsBundle/layout.html.twig' %}
  {% block content %}
-    {% block identity %}
      <div class="identity">
-         <h2>Nom de la revue</h2>
-         <p> Reprendre les differents éléments entrer en base de données (entite Review) </p>
+         <img class="img" src="picture.src" alt="picture.alt" width="140" height="140">
+         <h2 ><a href="{{ path('Front_oneMedia', {'id':media.id})}}">{{ media.name }}</a></h2>
+         <p class="card-text"> {{ media.presentation }}</p>
      </div>
-    {% endblock %}
-     {% block articles %}
-             <div class="well-lg">
-                 <h2>Liste des articles en base</h2>
-                 <p> utilisation du service de scraping</p>
-             </div>
-     {% endblock %}
+     {% for article in articles %}
+         <div class="col-lg-4">
+             <img class="img" src="#" alt="#" width="140" height="140">
+             <h3 ><a href="{{ path('Front_oneMedia', {'id':media.id})}}">{{ article.title }}</a></h3>
+             <p class="card-text"> {{ article.excerpt }}</p>
+         </div>
+     {% endfor %}
  {% endblock %}

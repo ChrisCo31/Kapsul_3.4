@@ -16,7 +16,7 @@ class Tag
      * @ORM\ManyToMany(targetEntity="CTS\KapsBundle\Entity\Article", inversedBy="tags")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $article;
+    private $articles;
     /**
      * @ORM\ManyToMany(targetEntity="CTS\KapsBundle\Entity\Media", inversedBy="tags")
      * @ORM\JoinColumn(nullable=false)
@@ -38,7 +38,13 @@ class Tag
      */
     private $name;
 
-
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->media = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -51,34 +57,27 @@ class Tag
     }
 
     /**
-     * Set tag
+     * Set name
      *
-     * @param string $tag
+     * @param string $name
      *
-     * @return Tag
+     * @return Name
      */
     public function setName($name)
     {
-        $this->tag = $name;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get tag
+     * Get Name
      *
      * @return string
      */
     public function getName()
     {
         return $this->name;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->media = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -124,7 +123,7 @@ class Tag
      */
     public function addArticle(\CTS\KapsBundle\Entity\Article $article)
     {
-        $this->article[] = $article;
+        $this->articles[] = $article;
 
         return $this;
     }
@@ -136,7 +135,7 @@ class Tag
      */
     public function removeArticle(\CTS\KapsBundle\Entity\Article $article)
     {
-        $this->article->removeElement($article);
+        $this->articles->removeElement($article);
     }
 
     /**
@@ -144,8 +143,8 @@ class Tag
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getArticle()
+    public function getArticles()
     {
-        return $this->article;
+        return $this->articles;
     }
 }

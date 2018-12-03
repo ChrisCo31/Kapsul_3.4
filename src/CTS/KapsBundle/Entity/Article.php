@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Article
 {
     /**
-     * @ORM\ManyToMany(targetEntity="CTS\KapsBundle\Entity\Tag", mappedBy="article", cascade={"all"})
+     * @ORM\ManyToMany(targetEntity="CTS\KapsBundle\Entity\Tag", mappedBy="articles", cascade={"all"})
      */
     private $tags;
     /**
@@ -192,6 +192,7 @@ class Article
      */
     public function getMedia()
     {
+        return null;
         return $this->media;
     }
 
