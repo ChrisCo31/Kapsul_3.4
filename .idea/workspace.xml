@@ -3,34 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4f694558-e127-47ed-8c33-830ac18fb9f2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Controller/BackController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Controller/BackController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Controller/FrontController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Controller/FrontController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Entity/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Entity/Article.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Entity/Media.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Entity/Media.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Entity/Selector.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Entity/Selector.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/EventListener/UniqueTag.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/EventListener/UniqueTag.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Form/MediaType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Form/MediaType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Form/SelectorType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Form/SelectorType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/config/services.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/config/services.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/_jumbotron.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/_jumbotron.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/_slider.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/back/_FormMedia.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/back/_FormMedia.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/back/_FormSelector.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/back/_FormSelector.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/back/connexion.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/back/connexion.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/back/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/back/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/back/mySpace.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/back/mySpace.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/back/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/back/register.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/back/scrap.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/back/scrap.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/front/contact.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/front/contact.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/front/contribute.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/front/contribute.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/front/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/front/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/front/media.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/front/media.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/front/medias.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/front/medias.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/front/search.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/front/search.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/layout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/layout.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Services/Scraping.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Services/Scraping.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/kapsul.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/kapsul.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -231,8 +203,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CTS/KapsBundle/Services/Scraping.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-419">
-              <caret line="105" column="8" selection-start-line="105" selection-start-column="8" selection-end-line="105" selection-end-column="8" />
+            <state relative-caret-position="306">
+              <caret line="105" selection-start-line="105" selection-end-line="105" />
               <folding>
                 <element signature="e#126#160#0#PHP" expanded="true" />
               </folding>
@@ -402,7 +374,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -462,6 +433,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -520,16 +492,15 @@
       <workItem from="1543400553020" duration="38079000" />
       <workItem from="1543761188511" duration="25445000" />
       <workItem from="1543949769294" duration="46114000" />
-      <workItem from="1544450521143" duration="224000" />
+      <workItem from="1544450521143" duration="1040000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="413938000" />
+    <option name="totallyTimeSpent" value="414978000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17324094" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -544,7 +515,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.050863724" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.46257198" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" x="1909" y="248" width="1876" height="343" id="Command Line Tools Console" order="12" weight="0.32917467" />
       <window_info anchor="bottom" id="Database Console" order="13" weight="0.32917467" />
@@ -929,8 +900,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CTS/KapsBundle/Services/Scraping.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-419">
-          <caret line="105" column="8" selection-start-line="105" selection-start-column="8" selection-end-line="105" selection-end-column="8" />
+        <state relative-caret-position="306">
+          <caret line="105" selection-start-line="105" selection-end-line="105" />
           <folding>
             <element signature="e#126#160#0#PHP" expanded="true" />
           </folding>
