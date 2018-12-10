@@ -63,39 +63,18 @@ class Media
     private $presentation;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="support", type="string", length=255)
-     */
-    private $support;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="frequency", type="string", length=255)
-     */
-    private $frequency;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="lang", type="string", length=255)
-     */
-    private $lang;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="price", type="string", length=255)
-     */
-    private $price;
-
-    /**
      * @var \DateTime
      *
      * @ORM\Column(name="createdAt", type="datetime")
      */
     private $createdAt;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="universe", length=255)
+     */
+    private $universe;
 
     /**
      * Constructor
@@ -190,102 +169,6 @@ class Media
     }
 
     /**
-     * Set support
-     *
-     * @param string $support
-     *
-     * @return Media
-     */
-    public function setSupport($support)
-    {
-        $this->support = $support;
-
-        return $this;
-    }
-
-    /**
-     * Get support
-     *
-     * @return string
-     */
-    public function getSupport()
-    {
-        return $this->support;
-    }
-
-    /**
-     * Set frequency
-     *
-     * @param string $frequency
-     *
-     * @return Media
-     */
-    public function setFrequency($frequency)
-    {
-        $this->frequency = $frequency;
-
-        return $this;
-    }
-
-    /**
-     * Get frequency
-     *
-     * @return string
-     */
-    public function getFrequency()
-    {
-        return $this->frequency;
-    }
-
-    /**
-     * Set lang
-     *
-     * @param string $lang
-     *
-     * @return Media
-     */
-    public function setLang($lang)
-    {
-        $this->lang = $lang;
-
-        return $this;
-    }
-
-    /**
-     * Get lang
-     *
-     * @return string
-     */
-    public function getLang()
-    {
-        return $this->lang;
-    }
-
-    /**
-     * Set price
-     *
-     * @param string $price
-     *
-     * @return Media
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
-    /**
-     * Get price
-     *
-     * @return string
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
-
-    /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -307,6 +190,30 @@ class Media
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * Set universe
+     *
+     * @param string $universe
+     *
+     * @return Media
+     */
+    public function setUniverse($universe)
+    {
+        $this->universe = $universe;
+
+        return $this;
+    }
+
+    /**
+     * Get universe
+     *
+     * @return string
+     */
+    public function getUniverse()
+    {
+        return $this->universe;
     }
 
     /**

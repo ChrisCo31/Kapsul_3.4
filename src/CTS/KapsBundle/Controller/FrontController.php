@@ -9,6 +9,7 @@
 namespace CTS\KapsBundle\Controller;
 
 
+use CTS\KapsBundle\Entity\Picture;
 use CTS\KapsBundle\Repository\MediaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,6 +17,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use CTS\KapsBundle\Services\Scraping;
 use CTS\KapsBundle\Entity\Tag;
+
+
 
 
 
@@ -28,6 +31,7 @@ class FrontController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $medias = $em->getRepository('CTSKapsBundle:Media')->findLast();
+
         //$medias = $repository->findLast();
         return $this->render('@CTSKapsBundle/front/index.html.twig', [
             'medias' => $medias,
@@ -54,9 +58,9 @@ class FrontController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $media = $em->getRepository('CTSKapsBundle:Media')->find($id);
-        $articles = $em->getRepository('CTSKapsBundle:Article')->findAll($media);
+        $articles = $em->getRepository('CTSKapsBundle:Article')->findBy(array('media' => $media));
         $picture =$media->getPicture();
-
+        
         return $this->render('@CTSKapsBundle/front/media.html.twig', [
             'media' => $media,
             'picture' => $picture,

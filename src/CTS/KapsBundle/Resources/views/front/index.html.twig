@@ -1,30 +1,24 @@
 {% extends '@CTSKapsBundle/layout.html.twig' %}
- {% block content %}
+
+ {% block body %}
          <div class="container ">
-             <h2> Dernieres entrées : </h2>
+             <h3> Dernieres entrées : </h3>
              <div class="row flex">
                  {% for media in medias %}
                  <div class="col-lg-4">
-                     <img class="img" src="#" alt="#" width="140" height="140">
-                     <h2 ><a href="{{ path('Front_oneMedia', {'id':media.id})}}">{{ media.name }}</a></h2>
-                     <p class="card-text"> {{ media.presentation }}</p>
+                    <div class="card" style="width: 18rem;">
+                        {% if media.picture is not null %}
+                            <img src="{{ media.picture.src }}" alt="{{ media.picture.alt }}" height="200">
+                        {% endif %}
+                        <div class="card-body">
+                            <h4 class="card-title"> 
+                                <a href="{{ path('Front_oneMedia', {'id':media.id})}}">{{ media.name }}</a>
+                            </h4>
+                            <p class="card-text"> {{ media.presentation }}</p>
+                        </div>
+                    </div>
                  </div>
                  {% endfor %}
              </div>
-         </div>
-         <div class="container text-center">
-             <h2>les tendances du moment</h2>
-             <h3> Descriptifs </h3>
-             <p> Les tags apparaissent dans l'ordre alphabetique. Le taille varie selon la fréquence avec laquelle ils apparaissent
-             dans les articles des differentes revue</p>
-             <p> tag 1 = + => les mots cité de une à 10 fois</p>
-             <p> tag 2 = ++ => les mots cité de 10 à 20 fois</p>
-             <p> tag 3 = +++</p>
-             <p> tag 4 = ++++</p>
-             <p> tag 5 = +++++</p>
-             <h3> Fonctionnement</h3>
-             <p> Les mots sont des liens qui renvoient chacun à une page listant toutes les revues ou le terme est evoqué</p>
-             <p> Probleme de l'indexation des mots clés par revue et par article, comment les entrer en base</p>
-             <p> service d'indexation de mots clés ?? cf FOSElasticaBundle : https://github.com/FriendsOfSymfony/FOSElasticaBundle</p>
          </div>
  {% endblock %}

@@ -46,7 +46,7 @@ class Article
     /**
      * @var string
      *
-     * @ORM\Column(name="excerpt", type="text")
+     * @ORM\Column(name="excerpt", type="text", nullable=true)
      */
     private $excerpt;
 

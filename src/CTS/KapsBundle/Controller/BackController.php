@@ -29,11 +29,10 @@ class BackController extends Controller
     /**
      * @route("/admin", name="Back_admin")
      */
-    public function manageAction(Request $request)
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
         $listMedia = $em->getRepository('CTSKapsBundle:Media')->findAll();
-
         $media = new Media();
 
         $form = $this->createForm(MediaType::class, $media);
@@ -43,6 +42,8 @@ class BackController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($media);
             $em->flush();
+            $this->addFlash('success', 'La revue est en base');
+            return $this->redirectToRoute('Back_admin');
         }
         return $this->render('@CTSKapsBundle/back/index.html.twig', ['form' => $form->createView(), 'listMedia' => $listMedia]);
     }
@@ -59,9 +60,7 @@ class BackController extends Controller
             $selector = new Selector();
             $selector->setMedia($media);
         }
-
         $name= $selector->getMedia()->getName();
-
         $form = $this->createForm(SelectorType::class, $selector);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
@@ -70,8 +69,9 @@ class BackController extends Controller
             $em->persist($selector);
             $em->flush();
         }
-        return $this->render('@CTSKapsBundle/back/_FormSelector.html.twig',
+        return $this->render('@CTSKapsBundle/back/Selector.html.twig',
             ['form' => $form->createView(),
+             'media'=> $media
             ]);
     }
 
@@ -92,11 +92,35 @@ class BackController extends Controller
         // 4. Persist results
 
         // 5. success message
-
+        $this->addFlash('success', 'Scraping réussi');
         // 6. Render twig file
         return $this->render('@CTSKapsBundle/back/scrap.html.twig');
 
     }
+    /**
+     * @route("/edit/{id}", name="Back_edit")
+     */
+    public function EditAction(Request $request,$id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $media = $em->getRepository('CTSKapsBundle:Media')->find($id);
+
+
+
+        $form = $this->createForm(MediaType::class, $media);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($media);
+            $em->flush();
+        }
+        return $this->render('@CTSKapsBundle/back/edit.html.twig',
+            ['form' => $form->createView(),
+             'media'=> $media
+            ]);
+    }
+
 
     /**
      * @route("/connexion", name="Back_connexion")

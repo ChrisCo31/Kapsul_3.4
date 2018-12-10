@@ -39,7 +39,7 @@ class SelectorType extends AbstractType
                 'required' => true
             ))
             ->add('selectorImg', textType::class, array(
-                'label' => 'selecteur du titre : ',
+                'label' => 'selecteur de l\'image : ',
                 'required' => true
             ))
             ->add('Enregister', SubmitType::class,[

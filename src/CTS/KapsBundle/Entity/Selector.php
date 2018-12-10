@@ -39,21 +39,21 @@ class Selector
     /**
      * @var string
      *
-     * @ORM\Column(name="selectorExcerpt", type="string", length=255)
+     * @ORM\Column(name="selectorExcerpt", type="string", length=255, nullable=true)
      */
     private $selectorExcerpt;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="selectorTag", type="string", length=255)
+     * @ORM\Column(name="selectorTag", type="string", length=255, nullable=true)
      */
     private $selectorTag;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="selectorDate", type="string", length=255)
+     * @ORM\Column(name="selectorDate", type="string", length=255, nullable=true)
      */
     private $selectorDate;
 
@@ -67,7 +67,7 @@ class Selector
     /**
      * @var string
      *
-     * @ORM\Column(name="selectorImg", type="string", length=255)
+     * @ORM\Column(name="selectorImg", type="string", length=255, nullable=true)
      */
     private $selectorImg;
 

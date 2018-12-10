@@ -46,95 +46,138 @@ class Scraping
             $selectorLink = $selector->getSelectorLink();
             $selectorImg = $selector->getSelectorImg();
         }
+
         // Scraping
         $crawler = $this->client->request('GET', $url);
+
         // Retrieve Picture
+        if($selectorImg!==NULL)
+        {
         $i = $crawler
             ->filterXPath($selectorImg)
             ->extract(array('src', 'alt'));
         $result['image'] = $i;
+        }
 
         // Retrieve Title
         $t = $crawler
             ->filterXPath($selectorTitle)
             ->extract(array('_text'));
         $result['title'] = $t;
+
         // Retrieve Tag
-        $w = $crawler
-            ->filterXPath($selectorTag)
-            ->extract(array('_text'));
-        $result['tag'] = $w;
-        
-        foreach($result['tag'] as $key => $tag)
+        if($selectorTag!==NULL)
         {
-            $words = preg_split('/#/', $tag, -1, PREG_SPLIT_NO_EMPTY);
-            $newResults[] = $words;
-        }
-        foreach($newResults as $values)
-        { 
-            foreach($values as $key => $value)
+            $w = $crawler
+                ->filterXPath(  $selectorTag)
+                ->extract(array('_text'));
+            $result['tag'] = $w;
+
+            foreach($result['tag'] as $key => $tag)
             {
-            
-                $resultat[]=$value;
+                $words = preg_split('/#/', $tag, -1, PREG_SPLIT_NO_EMPTY);
+                $newResults[] = $words;
             }
+            foreach($newResults as $values)
+            {
+                foreach($values as $key => $value)
+                {
+
+                    $resultat[]=$value;
+                }
+            }
+            $result['tag'] = $resultat;
         }
-        //var_dump($resultat);
-        $result['tag'] = $resultat;
-        //var_dump($result);        
+
         // Retrieve Excerpt
-        $e = $crawler
-            ->filterXPath($selectorExcerpt)
-            ->extract(array('_text'));
-        $result['excerpt'] = $e;
+        if($selectorExcerpt!==NULL)
+        {
+            $e = $crawler
+                ->filterXPath($selectorExcerpt)
+                ->extract(array('_text'));
+            $result['excerpt'] = $e;
+        }
+
         // Retrieve Link
         $a = $crawler
             ->filterXPath($selectorLink)
             ->extract(array('href'));
         $result['link'] = $a;
 
-        //var_dump($result);
-        
-        
+        // create a loop to set objects
         foreach($result['title'] as $key => $title)
         {
-            // Fill attributes
-            $article = new Article();
-            $article->setTitle($title);
-            $article->setExcerpt($result['excerpt'][$key]);
-            $article->setUrl($result['link'][$key]);
-            $article->setDate(new \DateTime());
+            if(!$article = $this->em->getRepository("CTSKapsBundle:Article")->findOneBy(array('title' => $title))) {
 
-            $picture = new Picture();
-            $picture->setSrc($result['image'][$key][0]);
-            $picture->setAlt('ImageArticle');
-            $article->setPicture($picture);
+                // Fill attributes
+                $article = new Article();
+                $article->setTitle($title);
+                if(!empty($result['excerpt']))
+                {
+                    $article->setExcerpt($result['excerpt'][$key]);
+                }
 
-            $article->setMedia($media);
+                $article->setUrl($result['link'][$key]);
+                $article->setDate(new \DateTime());
 
-            $keyTag = $key + $key;
-            
-            $tag1= new Tag();
-            $article->addTag($tag1);
-            $tag1->setName($result['tag'][$keyTag]);
-            $tag1->addArticle($article);
-            
-            //var_dump($tag1);
-            $tag2= new Tag();
-            $article->addTag($tag2);
-            $tag2->setName($result['tag'][$keyTag+1]);       
-            $tag2->addArticle($article);     
-            //var_dump($tag2);
+                $picture = new Picture();
+                $picture->setSrc($result['image'][$key][0]);
+                $picture->setAlt('ImageArticle');
+                $article->setPicture($picture);
 
-            $exist = $this->em->getRepository('CTSKapsBundle:Article')->findOneBy(['title' => $article->getTitle()]);
+                $article->setMedia($media);
 
-            //check if db is null or contains already the scrap title of the article.
-            if( $exist==null || !$exist->getTitle())
-            {
+
+                // check if array tag exist
+                /*if(isset( $result['tag']))
+                {
+                    // Single or multiple tags per article
+                    $arrayTag= array_keys($result['tag']);
+                    $arrayTitle= array_keys($result['title']);
+
+                    if($arrayTitle === $arrayTag)
+                    {
+
+                        $tag= new Tag();
+
+                        $tag->setName($result['tag']);
+                        $tag->addArticle($article);
+                        $article->addTag($tag);
+                    }
+                    else
+                    {*/
+                $keyTag = $key + $key;
+                echo $key;
+                echo "<pre>";print_r($result['tag']);
+
+                if( !$tag = $this->em->getRepository('CTSKapsBundle:Tag')->findOneBy([ "name"=>$result['tag'][$keyTag]  ])) {
+                    $tag = new Tag();
+                }
+                $article->addTag($tag);
+                $tag->addArticle($article);
+
+
+
+
+                $tag1= new Tag();
+                $article->addTag($tag1);
+                $tag1->setName($result['tag'][$keyTag]);
+                $tag1->addArticle($article);
+
+                $tag2= new Tag();
+                $article->addTag($tag2);
+                $tag2->setName($result['tag'][$keyTag+1]);
+                $tag2->addArticle($article);
+
                 // Persist
-                $this->em->persist($article);
-                $this->em->flush();
+                //$this->em->persist($article);
+                //$this->em->flush();
+
             }
+
+
 	    }
+        exit();
     }
 }
 

@@ -2,7 +2,6 @@
 
     <div class="container">
 
-        <h2>Nouvelle revue</h2>
         <div class="row">
 
             {{ form_start(form) }}
@@ -25,30 +24,6 @@
                 </p>
             </div>
             <div class="row">
-
-                <p> {{ form_label(form.support) }}
-                    {{ form_widget(form.support) }}
-                </p>
-            </div>
-            <div class="row">
-
-                <p> {{ form_label(form.frequency) }}
-                    {{ form_widget(form.frequency) }}
-                </p>
-            </div>
-            <div class="row">
-                <p>
-                    {{ form_label(form.lang) }}
-                    {{ form_widget(form.lang) }}
-                </p>
-            </div>
-            <div class="row">
-                <p>
-                    {{ form_label(form.price) }}
-                    {{ form_widget(form.price) }}
-                </p>
-            </div>
-            <div class="row">
                 <p>
                     {{ form_label(form.createdAt) }}
                     {{ form_widget(form.createdAt) }}
@@ -60,97 +35,17 @@
                     {{ form_label(form.picture) }}
                     {{ form_widget(form.picture) }}
                 </p>
-
             </div>
-
-            <div class="row">
-                <h3> Tags </h3>
-                <ul class= "tags" >
-                    {# iterate over each existing tag and render its only field: name #}
-                    {% for tag in form.tags %}
-                        <li> {{ form_row ( tag.tag ) }} </li>
-                    {% endfor %}
-                </ul>
-            </div>
-
             <div class="row">
                 <p>
-                    {{ form_label(form.tags) }}
-                    {{ form_widget(form.tags) }}
-                    <a href="#" id="add_tag" class="btn btn-default">Ajouter un tag</a>
+                    {{ form_label(form.universe) }}
+                    {{ form_widget(form.universe) }}
                 </p>
-
             </div>
 
             {{ form_rest(form) }}
             {{ form_end(form) }}
         </div>
     </div>
-{% endblock %}
-{% block javascripts %}
-    <script src="{{ asset('js/jquery.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script type="text/javascript">
-        //recuperation de la balise div qui contine l'attribut "data-prototype"
-        var $container=$('media_themes');
-        var index = $container.find(':input').length;
-        $('#add_tag').click(function(e)
-        {
-            console.log("hello world");
-            $container.show();
-           // addTheme($container);
-            //e.preventDefault(); // évite qu'un # apparaisse dans l'URL
-            return false;
-        });
-/*
-        if (index == 0)
-        {
-            addTheme($container);
-        } else
-        {
-            // S'il existe déjà des catégories, on ajoute un lien de suppression pour chacune d'entre elles
-            $container.children('div').each(function()
-            {
-                addDeleteLink($(this));
-            });
-        }
 
-        // La fonction qui ajoute un formulaire CategoryType
-        function addTheme($container)
-        {
-            // Dans le contenu de l'attribut « data-prototype », on remplace :
-            // - le texte "__name__label__" qu'il contient par le label du champ
-            // - le texte "__name__" qu'il contient par le numéro du champ
-            var template = $container.attr('data-prototype')
-                .replace(/__name__label__/g, 'Catégorie n°' + (index+1))
-                .replace(/__name__/g,        index)
-            ;
-            // On crée un objet jquery qui contient ce template
-            var $prototype = $(template);
-           // On ajoute au prototype un lien pour pouvoir supprimer la catégorie
-            addDeleteLink($prototype);
-            // On ajoute le prototype modifié à la fin de la balise <div>
-            $container.append($prototype);
-            // Enfin, on incrémente le compteur pour que le prochain ajout se fasse avec un autre numéro
-            index++;
-        }
-
-        // La fonction qui ajoute un lien de suppression d'une catégorie
-        function addDeleteLink($prototype)
-        {
-            // Création du lien
-            var $deleteLink = $('<a href="#" class="btn btn-danger">Supprimer</a>');
-            // Ajout du lien
-            $prototype.append($deleteLink);
-            // Ajout du listener sur le clic du lien pour effectivement supprimer la catégorie
-            $deleteLink.click(function(e)
-            {
-                $prototype.remove();
-                e.preventDefault(); // évite qu'un # apparaisse dans l'URL
-                return false;
-            });
-
-        };
-        */
-    </script>
 {% endblock %}

@@ -39,40 +39,6 @@ class MediaType extends AbstractType
                 'required' => true
             ))
 
-            ->add('support', ChoiceType::class, array(
-                'choices' => array(
-                    'ecrit' => true,
-                    'audio' => false,
-                    'video' => false,
-                )
-            ))
-
-            ->add('frequency', ChoiceType::class, array(
-                'choices' => array(
-                    'quotidien' => true,
-                    'hebdomadaire' => false,
-                    'mensuel' => false,
-                    'trimestriel'=> false,
-                    'indefini' => false,
-                )
-            ))
-
-            ->add('lang', ChoiceType::class, array(
-                'label' => 'Langue : ',
-                'choices' => array(
-                    'fr' => true,
-                    'en' => false,
-                )
-            ))
-
-            ->add('price', ChoiceType::class, array(
-                'label' => 'Price : ',
-                'choices' => array(
-                    'gratuit' => true,
-                    'payant' => false,
-                )
-            ))
-
             ->add('createdAt', DateType::class,[
                 'label' => 'Date : ',
                 'format' => 'dd/MM/yyyy',
@@ -80,13 +46,19 @@ class MediaType extends AbstractType
             ])
             ->add('picture', PictureType::class, [
                 'label' => 'Image : ',
-                'required' => false])
-
-            ->add('tags', CollectionType::class, [
-                'entry_type' => TagType::class,
-                'entry_options' => array ( 'label' => false ),
+                'required' => false
             ])
-
+            ->add('universe', ChoiceType::class, [
+                'label' => 'Univers',
+                'choices' => [
+                    'Arts' => true,
+                    'Culture' => false,
+                    'Histoire'=> false,
+                    'Sciences'=> false,
+                    'Politique'=> false,
+                    'Societe'=> false,
+                ]
+                ])
             ->add('save', SubmitType::class, [
                 'label' => 'Sauvegarder'
             ]);

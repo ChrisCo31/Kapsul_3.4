@@ -1,23 +1,34 @@
 {% extends '@CTSKapsBundle/layout.html.twig' %}
- {% block content %}
-     {% block option %}
-         <div class="well">
-         <h2>Liste des medias en base</h2>
-            <div class="button">
-             {% for media in listMedia %}
-                 <h3> - {{ media.name }}
-
-                 <a class="btn btn-warning btn-sm" href ="{{ path('Back_selector', {'id': media.id})}}"> Mettre a jour</a>
-                 <a class="btn btn-warning btn-sm" href ="{{ path('Back_selector', {'id': media.id})}}"> Supprimer</a>
-                 <a class="btn btn-warning btn-sm" href ="{{ path('Back_selector', {'id': media.id})}}"> Entrer les Selecteurs</a>
-                 <a class="btn btn-warning btn-sm" href ="{{ path('Back_scrap', {'id': media.id})}}"> Scraper</a>
-                 </h3>
-
-             {% endfor %}
+ {% block title %} Dashboard Admin {% endblock %}
+ {% block body %}
+    <div class="container mt-4">
+        <h2>Gerer les ressources</h2>
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
             </div>
-         </div>
-     {% endblock %}
-    {% block form %}
-         {% include '@CTSKapsBundle/back/_FormMedia.html.twig' %}
-    {% endblock %}
+        {% endfor %}
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th> Nom de la revue </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for media in listMedia %}
+                <tr>
+                    <td><h4><a href="{{ path('Front_oneMedia', {'id': media.id})}}">{{ media.name }}</a></h4></td>
+                    <td><h4><a href ="{{ path('Back_selector', {'id': media.id})}}" class="btn btn-primary btn-sm">Selecteurs</a><h4></td>
+                    <td><h4><a href ="{{ path('Back_scrap', {'id': media.id})}}" type="button" class="btn btn-primary btn-sm"> Scraper</a><h4></td>
+                    <td><h4><a href ="{{ path('Back_edit', {'id': media.id})}}" class="btn btn-primary btn-sm">Editer</a><h4></td>
+                </tr>                                          
+            {% endfor %}
+            </tbody>
+        </table>
+        <h2>Inserer une nouvelle revue</h2>
+            {% include '@CTSKapsBundle/back/_FormMedia.html.twig' %}
+
+    </div>
  {% endblock %}

@@ -1,11 +1,9 @@
-{% extends '@CTSKapsBundle/layout.html.twig' %}
  {% block content %}
      {% block form %}
 
          <div class="container">
 
-             <h4>Sélecteurs pour scraper la page d'accueil de la revue  : </h4>
-             <p> correspondant à </p>
+             <h4>Sélecteurs de la revue: {{ media.name }} </h4>
              <div class="row">
 
                  {{ form_start(form) }}
