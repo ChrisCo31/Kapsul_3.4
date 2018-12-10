@@ -46,13 +46,6 @@ class Selector
     /**
      * @var string
      *
-     * @ORM\Column(name="selectorTag", type="string", length=255, nullable=true)
-     */
-    private $selectorTag;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="selectorDate", type="string", length=255, nullable=true)
      */
     private $selectorDate;
@@ -128,30 +121,6 @@ class Selector
     public function getSelectorExcerpt()
     {
         return $this->selectorExcerpt;
-    }
-
-    /**
-     * Set selectorTag
-     *
-     * @param string $selectorTag
-     *
-     * @return Selector
-     */
-    public function setSelectorTag($selectorTag)
-    {
-        $this->selectorTag = $selectorTag;
-
-        return $this;
-    }
-
-    /**
-     * Get selectorTag
-     *
-     * @return string
-     */
-    public function getSelectorTag()
-    {
-        return $this->selectorTag;
     }
 
     /**

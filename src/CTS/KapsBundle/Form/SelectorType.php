@@ -26,10 +26,6 @@ class SelectorType extends AbstractType
                 'label' => 'selecteur du résumé : ',
                 'required' => true
             ))
-            ->add('selectorTag', textType::class, array(
-                'label' => 'selecteur du tag : ',
-                'required' => true
-            ))
             ->add('selectorDate', textType::class, array(
                 'label' => 'selecteur date publication : ',
                 'required' => true

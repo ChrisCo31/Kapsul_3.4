@@ -13,20 +13,17 @@ use Doctrine\ORM\Mapping as ORM;
 class Article
 {
     /**
-     * @ORM\ManyToMany(targetEntity="CTS\KapsBundle\Entity\Tag", mappedBy="articles", cascade={"all"})
-     */
-    private $tags;
-    /**
      * @orm\OneToOne(targetEntity="CTS\KapsBundle\Entity\Picture",cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
+
     private $picture;
     /**
      * @ORM\ManyToOne(targetEntity="CTS\KapsBundle\Entity\Media", inversedBy="articles")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $media;
 
+    private $media;
     /**
      * @var int
      *
@@ -34,6 +31,7 @@ class Article
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
+
     private $id;
 
     /**
@@ -218,46 +216,5 @@ class Article
     public function getPicture()
     {
         return $this->picture;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add tag
-     *
-     * @param \CTS\KapsBundle\Entity\Tag $tag
-     *
-     * @return Article
-     */
-    public function addTag(\CTS\KapsBundle\Entity\Tag $tag)
-    {
-        $this->tags[] = $tag;
-
-        return $this;
-    }
-
-    /**
-     * Remove tag
-     *
-     * @param \CTS\KapsBundle\Entity\Tag $tag
-     */
-    public function removeTag(\CTS\KapsBundle\Entity\Tag $tag)
-    {
-        $this->tags->removeElement($tag);
-    }
-
-    /**
-     * Get tags
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getTags()
-    {
-        return $this->tags;
     }
 }

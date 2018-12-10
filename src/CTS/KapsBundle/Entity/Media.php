@@ -18,10 +18,6 @@ class Media
      */
     private $selectors;
     /**
-     * @ORM\ManyToMany(targetEntity="CTS\KapsBundle\Entity\Tag", mappedBy="media", cascade={"all"})
-     */
-    private $tags;
-    /**
      * @ORM\OneToOne(targetEntity="CTS\KapsBundle\Entity\Picture", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
@@ -81,7 +77,6 @@ class Media
      */
     public function __construct()
     {
-        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
         $this->selectors = new \Doctrine\Common\Collections\ArrayCollection();
         $this->createdAt = new \DateTime();
     }
@@ -238,40 +233,6 @@ class Media
     public function getPicture()
     {
         return $this->picture;
-    }
-
-    /**
-     * Add theme
-     *
-     * @param \CTS\KapsBundle\Entity\Tag $tag
-     *
-     * @return Media
-     */
-    public function addTag(\CTS\KapsBundle\Entity\Tag $tag)
-    {
-        $this->tag[] = $tag;
-
-        return $this;
-    }
-
-    /**
-     * Remove theme
-     *
-     * @param \CTS\KapsBundle\Entity\Tag $tag
-     */
-    public function removeTag(\CTS\KapsBundle\Entity\Tag $tag)
-    {
-        $this->tags->removeElement($tag);
-    }
-
-    /**
-     * Get themes
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getTags()
-    {
-        return $this->tags;
     }
 
     /**

@@ -3,12 +3,3 @@ services:
     cts_kaps.Scraping:
         class: CTS\KapsBundle\Services\Scraping
         arguments: ["@doctrine.orm.entity_manager"]
-        
-    cts_kaps.listener:
-        class: CTS\KapsBundle\EventListener\UniqueTag
-        tags:
-            - { name: doctrine.event_listener, event: prePersist }
-
-
-
-
