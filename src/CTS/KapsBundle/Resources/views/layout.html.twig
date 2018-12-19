@@ -7,6 +7,7 @@
     <title>{% block title %}Kapsul{% endblock %}</title>
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/kapsul.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300|Palanquin:100|Source+Sans+Pro:300" rel="stylesheet">
     {% block stylesheet %}{% endblock %}
 </head>
 <body>
@@ -27,6 +28,41 @@
     </div>
 </body>
 {% block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/d3js/5.7.0/d3.min.js"></script>
     <script src="{{ asset('js/jquery.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script>
+        $(document).ready(function(){
+            {# test : hide the gif #}
+            $('.loader').hide();
+
+            {# select search field and listen keyboard #}
+            $('#search').keyup(function(){
+                $("#search").css("background-color", "pink");
+                $field = $(this);
+                {# initialize an empty string in div result #}
+                $('#result').html('');
+                {# from the second character typing #}
+                if($field.val().length>3)
+                {
+                    {# use function Ajax of jquery with parameters #}
+                    $.ajax({
+                        type: 'POST',
+                        url: "{{ path('Front_search') }}",
+                        data: 'search='+$('#search').val(),
+                    {# dispaly gif#}
+                        beforeSend:function(){
+                            $('.loader').stop().fadeIn();
+                        },
+
+                        {# display results #}
+                        success: function(data){
+                            $('.loader').fadeOut();
+                            $('#result').html(data);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 {% endblock %}

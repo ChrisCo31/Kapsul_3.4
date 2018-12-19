@@ -120,7 +120,19 @@ class BackController extends Controller
              'media'=> $media
             ]);
     }
+    /**
+     * @Route("/delete/{id}", name="Back_delete")
+     */
+    public function delete(Media $media, Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $media = $em->getRepository('CTSKapsBundle:Media')->find($id);
+        $em->remove($media);
+        $em->flush();
+        $this->addFlash('success', 'Bien supprimé avec succès');
 
+        return $this->redirectToRoute('Back_admin');
+    }
 
     /**
      * @route("/connexion", name="Back_connexion")

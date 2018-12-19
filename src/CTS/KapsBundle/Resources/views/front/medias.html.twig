@@ -1,32 +1,35 @@
 {% extends '@CTSKapsBundle/layout.html.twig' %}
 {% block title %} Présentation des revues {% endblock %}
  {% block body %}
-     <div class="container ">
-        <div class="row">
-            <div class="col-md-4">
-            <h2>Outils de tri des revues</h2>
 
-            </div>
-            <div class="col-md-8">
-
-            </div>
-        </div>
-
-         <h2> Ressources en base</h2>
-
-         <div class="row">
-             {% for media in medias %}
-                 <div class="col-lg-4">
-                     {% if media.picture is not null %}
-                         <img src="{{ media.picture.src }}" alt="{{ media.picture.alt }}" height="200">
-                     {% endif %}
-                     <h2 ><a href="{{ path('Front_oneMedia', {'id':media.id})}}">{{ media.name }}</a></h2>
-                     <p class="card-text"> {{ media.presentation }}</p>
-                 </div>
-             {% endfor %}
+     <div class="row">
+         <div class="col-lg-2">
+                 <a href="{{ path('Front_medias', {'direction': 'ASC'}) }}" class="btn btn-warning btn-lg" title="Lien 1">De A à Z</a>
+         </div>
+         <div class="col-lg-2">
+             <a href="{{ path('Front_medias', {'direction': 'DESC'}) }}" class="btn btn-warning btn-lg" title="Lien 2">De Z à A</a>
          </div>
      </div>
 
 
+     <div class="row">
+         <div class="col-xs-8">
+            <h3> Les ressources présentes sur le site :</h3>
+         </div>
+         <div class="col-xs-4">
 
-{% endblock %}
+         </div>
+     </div>
+     <div class="row">
+         {% for media in medias %}
+             <div class="col-lg-4">
+                 {% if media.picture is not null %}
+                 <a href="{{ path('Front_oneMedia', {'id':media.id})}}"><img src="{{ media.picture.src }}" alt="{{ media.picture.alt }}" height="230" width="230"></a>
+                 {% endif %}
+                 <h4 ><a href="{{ path('Front_oneMedia', {'id':media.id})}}">{{ media.name }}</a></h4>
+                 <p class="card-text"> {{ media.presentation }}</p>
+             </div>
+         {% endfor %}
+     </div>
+ {% endblock %}
+

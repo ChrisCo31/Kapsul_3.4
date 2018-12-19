@@ -5,4 +5,9 @@
          <h2>Editer la revue</h2>
          {% include '@CTSKapsBundle/back/_FormMedia.html.twig' %}
      </div>
+     <div class="row">
+         <div class="col-lg-offset-7 col-lg-5">
+             <a class="btn btn-primary btn-lg" href="{{path('Back_delete',{'id': media.id})}}">supprimer</a>
+         </div>
+     </div>
  {% endblock %}

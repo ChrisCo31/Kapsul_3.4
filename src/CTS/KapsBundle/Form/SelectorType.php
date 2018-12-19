@@ -24,11 +24,11 @@ class SelectorType extends AbstractType
             ))
             ->add('selectorExcerpt', textType::class, array(
                 'label' => 'selecteur du résumé : ',
-                'required' => true
+                'required' => false
             ))
             ->add('selectorDate', textType::class, array(
                 'label' => 'selecteur date publication : ',
-                'required' => true
+                'required' => false
             ))
             ->add('selectorLink', textType::class, array(
                 'label' => 'selecteur du lien : ',
@@ -36,7 +36,7 @@ class SelectorType extends AbstractType
             ))
             ->add('selectorImg', textType::class, array(
                 'label' => 'selecteur de l\'image : ',
-                'required' => true
+                'required' => false
             ))
             ->add('Enregister', SubmitType::class,[
                     'label' => 'Enregister',

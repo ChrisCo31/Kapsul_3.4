@@ -1,16 +1,18 @@
 {% extends '@CTSKapsBundle/layout.html.twig' %}
 {% block title %} Chercher sur Kapsul {% endblock %}
  {% block body %}
-     
-         <div class="row">
-             <h2>Moteur de recheche</h2>
-             <p> Probleme de l'indexation</p>
-             <p> Création d'une table spécifique</p>
-         </div><!-- /.row -->
-    
-     
-         <div class="well-lg">
-             <h2>Tableau des resultats</h2>
-         </div>
+     <div id="content">
+         <form action="search.php" method="post">
+             {# The form #}
+             <label for="search">Rechercher sur le site:</label>
+             <input type="text" name="search" id="search" />
+             {# Gif #}
+             <div class="loader"></div>
+
+         </form>
+         {# Displays research results #}
+         <div id="result"></div>
+     </div>
     
  {% endblock %}
+

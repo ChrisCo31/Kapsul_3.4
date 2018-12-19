@@ -39,16 +39,21 @@ class FrontController extends Controller
     }
 
     /**
-     * @route("/medias", name="Front_medias")
+     * @route("/medias/{direction}", name="Front_medias", defaults={"direction"=null})
      */
-    public function showAllMediasAction(Request $request)
+    public function showAllMediasAction(Request $request, $direction)
     {
         $em = $this->getDoctrine()->getManager();
-        $medias = $em->getRepository('CTSKapsBundle:Media')->findAll();
-        return $this->render('@CTSKapsBundle/front/medias.html.twig', [
-            'medias' => $medias
-        ]);
+        if($direction==null) $direction = 'ASC';
+        $medias = $em->getRepository('CTSKapsBundle:Media')->findBy([], ['name'=> $direction]);
+        $universes = $em->getRepository('CTSKapsBundle:Media')->findUniverses();
+        $nameAZ = $em->getRepository('CTSKapsBundle:Media')->sortByNameAZ();
 
+        return $this->render('@CTSKapsBundle/front/medias.html.twig', [
+            'medias' => $medias,
+            'universes' => $universes,
+            'nameAZ' => $nameAZ
+        ]);
     }
 
     /**
@@ -69,34 +74,27 @@ class FrontController extends Controller
     }
 
     /**
-     * @route("/article", name="Front_showArticles")
-     */
-    public function showArticle()
-    {
-        $em = $this->getDoctrine()->getManager();
-        $article = $em->getRepository('CTSKapsBundle:Article')->find(217);
-
-        foreach($article->getTags() as $tag)
-        {
-            echo $tag->getName();
-        }
-        exit();
-        $tag = $em->getRepository('CTSKapsBundle:Tag')->findOneBy(['name' => 'espace']);
-        //var_dump($tag);
-        foreach($tag->getArticles() as $article)
-        {
-            echo $article->getTitle();
-        }
-        //var_dump($article->getTags());
-
-    }
-    /**
      * @route("/search", name="Front_search")
      */
-    public function searchAction()
+    public function searchAction(Request $request)
     {
+        $data = "SpaceX";
+        $em = $this->getDoctrine()->getManager();
+        $results = $em->getRepository('CTSKapsBundle:Article')->findArticleWith($data);
+        var_dump($results);
+
         return $this->render('@CTSKapsBundle/front/search.html.twig');
     }
+    /**
+     * @route("/result", name="Front_result")
+     */
+    public function resultAction()
+    {
+
+
+        return $this->render('@CTSKapsBundle/front/result.html.twig');
+    }
+
 
     /**
      * @route("/contact", name="Front_contact")

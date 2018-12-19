@@ -52,24 +52,24 @@ class Scraping
         // Retrieve Picture
         if($selectorImg!==NULL)
         {
-        $i = $crawler
-            ->filterXPath($selectorImg)
-            ->extract(array('src', 'alt'));
-        $result['image'] = $i;
+            $i = $crawler
+                ->filterXPath($selectorImg)
+                ->extract(array('src|data-src','alt'));
+            $result['image'] = $i;
         }
-
         // Retrieve Title
         $t = $crawler
             ->filterXPath($selectorTitle)
             ->extract(array('_text'));
         $result['title'] = $t;
 
+
         // Retrieve Excerpt
         if($selectorExcerpt!==NULL)
         {
             $e = $crawler
                 ->filterXPath($selectorExcerpt)
-                ->extract(array('_text'));
+                ->extract(array('_text|data-text'));
             $result['excerpt'] = $e;
         }
 
@@ -92,7 +92,14 @@ class Scraping
                     $article->setExcerpt($result['excerpt'][$key]);
                 }
 
-                $article->setUrl($result['link'][$key]);
+                if(strncmp(($result['link'][$key]), 'HTTP', 4) =='http')
+                {
+                    $article->setUrl($result['link'][$key]);
+                }else{
+                    $url= trim($url, '/');
+                    $article->setUrl($url.$result['link'][$key]);
+                }
+
                 $article->setDate(new \DateTime());
 
                 $picture = new Picture();
@@ -110,4 +117,10 @@ class Scraping
     }
 }
 
-
+/*
+->filterXPath('//div[@class="image-container"]/a/img |
+                                //div[@class="image-container"]/a/span |
+                                //div[@class="grid-article-body"]/h2 |
+                                //div[@class="grid-article-body"]/h2/a')
+    ->extract(array('data-src', 'data-text', '_text', 'href'));
+*/

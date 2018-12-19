@@ -2,28 +2,31 @@
 {% block title %} Kapsul de {{ media.name }} {% endblock %}
  {% block body %} 
     <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                {% if media.picture is not null %}
-                    <img src="{{ media.picture.src }}" alt="{{ media.picture.alt }}" height="200">
-                {% endif %}
-            </div>
-            <div class="col-md-8">
-            <h2 ><a href="{{ path('Front_oneMedia', {'id':media.id})}}">{{ media.name }}</a></h2>
-            <p class="card-text"> {{ media.presentation}}</p>
+        <div class="prez_media">
+            <div class="row">
+                <div class="col-md-4">
+                    {% if media.picture is not null %}
+                        <a href="{{ media.url }}"><img src="{{ media.picture.src }}" alt="{{ media.picture.alt }}" height="200"></a>
+                    {% endif %}
+                </div>
+                <div class="col-md-8">
+                <h2 ><a href="{{ media.url}}">{{ media.name }}</a></h2>
+                <p class="card-text"> {{ media.presentation}}</p>
+                </div>
             </div>
         </div>
-
-        <div class="row">
-        {% for article in articles %}
-            <div class="col-lg-4">
-                {% if article.picture is not null %}
-                    <img src="{{ article.picture.src }}" alt="{{ article.picture.alt }}" height="200">
-                {% endif %}
-                <h4 ><a href="{{ media.url }}">{{ article.title }}</a></h4>
-                <p class="card-text"> {{ article.excerpt }}</p>
+        <div class="prez_article">
+            <div class="row">
+            {% for article in articles %}
+                <div class="col-lg-4">
+                    {% if article.picture is not null %}
+                        <img src="{{ article.picture.src }}" alt="{{ article.picture.alt }}" height="200">
+                    {% endif %}
+                    <h4><a href="{{ article.url }}">{{ article.title }}</a></h4>
+                    <p class="card-text"> {{ article.excerpt |truncate(120) }}</p>
+                </div>
+            {% endfor %}
             </div>
-        {% endfor %}
         </div>
     </div>
  {% endblock %}

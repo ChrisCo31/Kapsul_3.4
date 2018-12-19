@@ -2,13 +2,15 @@
 
  {% block body %}
          <div class="container ">
-             <h3> Dernieres entrées : </h3>
+             <div class="col-lg-12">
+                <h3>DERNIERES DECOUVERTES </h3>
+             </div>
              <div class="row flex">
                  {% for media in medias %}
                  <div class="col-lg-4">
                     <div class="card" style="width: 18rem;">
                         {% if media.picture is not null %}
-                            <img src="{{ media.picture.src }}" alt="{{ media.picture.alt }}" height="200">
+                            <img src="{{ media.picture.src }}" alt="{{ media.picture.alt }}" height="230" width="230">
                         {% endif %}
                         <div class="card-body">
                             <h4 class="card-title"> 
