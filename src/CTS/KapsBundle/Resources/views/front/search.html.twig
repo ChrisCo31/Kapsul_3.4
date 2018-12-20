@@ -2,13 +2,14 @@
 {% block title %} Chercher sur Kapsul {% endblock %}
  {% block body %}
      <div id="content">
-         <form action="search.php" method="post">
+         <form action="{{ path('Front_search') }}" method="post">
              {# The form #}
-             <label for="search">Rechercher sur le site:</label>
-             <input type="text" name="search" id="search" />
+             <div class="form-group">
+                 <label for="search">Rechercher sur le site:</label>
+                 <input type="text" name="search" id="search" />
+             </div>
              {# Gif #}
              <div class="loader"></div>
-
          </form>
          {# Displays research results #}
          <div id="result"></div>

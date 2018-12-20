@@ -38,19 +38,22 @@
 
             {# select search field and listen keyboard #}
             $('#search').keyup(function(){
+                {# test : color field #}
                 $("#search").css("background-color", "pink");
+                {# define var = search field + listen #}
                 $field = $(this);
                 {# initialize an empty string in div result #}
                 $('#result').html('');
                 {# from the second character typing #}
-                if($field.val().length>3)
+                if($field.val().length>2)
                 {
                     {# use function Ajax of jquery with parameters #}
                     $.ajax({
                         type: 'POST',
                         url: "{{ path('Front_search') }}",
+                        {# var search = value of the field search #}
                         data: 'search='+$('#search').val(),
-                    {# dispaly gif#}
+                    {# display gif#}
                         beforeSend:function(){
                             $('.loader').stop().fadeIn();
                         },

@@ -26,7 +26,7 @@ class FrontController extends Controller
 {
     /**
      * @route("/", name="Front_home")
-     */
+    */
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -83,18 +83,10 @@ class FrontController extends Controller
         $results = $em->getRepository('CTSKapsBundle:Article')->findArticleWith($data);
         var_dump($results);
 
-        return $this->render('@CTSKapsBundle/front/search.html.twig');
+        return $this->render('@CTSKapsBundle/front/search.html.twig', [
+            'results' => $results
+        ]);
     }
-    /**
-     * @route("/result", name="Front_result")
-     */
-    public function resultAction()
-    {
-
-
-        return $this->render('@CTSKapsBundle/front/result.html.twig');
-    }
-
 
     /**
      * @route("/contact", name="Front_contact")
@@ -104,13 +96,6 @@ class FrontController extends Controller
         return $this->render('@CTSKapsBundle/front/contact.html.twig');
     }
 
-    /**
-     * @route("/pickup", name="Front_pickup")
-     */
-    public function pickupAction()
-    {
-        return new Response ("la page des capsules thematiques");
-    }
 
     /**
      * @route("/contribute", name="Front_contribute")

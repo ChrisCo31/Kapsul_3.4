@@ -23,6 +23,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class BackController extends Controller
 {
@@ -135,29 +136,28 @@ class BackController extends Controller
     }
 
     /**
-     * @route("/connexion", name="Back_connexion")
+     * @route("/login", name="login")
+     * @param AuthenticationUtils $authenticationUtils
+     * @return Response
      */
-    public function connectAction()
+    public function loginAction(AuthenticationUtils $authenticationUtils)
     {
+        $error = $authenticationUtils->getLastAuthenticationError();
+        $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('@CTSKapsBundle/back/connexion.html.twig');
+        return $this->render('@CTSKapsBundle/back/login.html.twig', [
+            'last_username' => $lastUsername,
+            'error' => $error
+        ]);
     }
 
     /**
-     * @route("/register", name="Back_register")
+     * @route("/logout", name="logout")
      */
-    public function registerAction()
+    public function logoutAction()
     {
 
-        return $this->render('@CTSKapsBundle/back/register.html.twig');
+        return $this->redirectToRoute('Front_home');
     }
 
-    /**
-     * @route("/myspace", name="Back_mySpace")
-     */
-    public function mySpaceAction()
-    {
-
-        return $this->render('@CTSKapsBundle/back/mySpace.html.twig');
-    }
 }
