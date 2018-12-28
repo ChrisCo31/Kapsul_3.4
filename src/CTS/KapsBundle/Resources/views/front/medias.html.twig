@@ -3,6 +3,9 @@
  {% block body %}
 
      <div class="row">
+         <div class="col-lg-6">
+             <h3>RESSOURCES EN BASE<div></div></h3>
+         </div>
          <div class="col-lg-2">
                  <a href="{{ path('Front_medias', {'direction': 'ASC'}) }}" class="btn btn-warning btn-lg" title="Lien 1">De A à Z</a>
          </div>
@@ -13,12 +16,7 @@
 
 
      <div class="row">
-         <div class="col-xs-8">
-            <h3> Les ressources présentes sur le site :</h3>
-         </div>
-         <div class="col-xs-4">
 
-         </div>
      </div>
      <div class="row">
          {% for media in medias %}
@@ -31,5 +29,6 @@
              </div>
          {% endfor %}
      </div>
+
  {% endblock %}
 

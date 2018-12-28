@@ -8,3 +8,7 @@ services:
         class: Twig_Extensions_Extension_Text
         tags:
         - { name: twig.extension }
+
+    cts_kaps.Paginator:
+        class: CTS\KapsBundle\Services\Paginator
+        arguments: ["@doctrine.orm.entity_manager"]

@@ -54,7 +54,7 @@ class Scraping
         {
             $i = $crawler
                 ->filterXPath($selectorImg)
-                ->extract(array('src|data-src','alt'));
+                ->extract(array('src','alt'));
             $result['image'] = $i;
         }
         // Retrieve Title
@@ -69,7 +69,7 @@ class Scraping
         {
             $e = $crawler
                 ->filterXPath($selectorExcerpt)
-                ->extract(array('_text|data-text'));
+                ->extract(array('_text'));
             $result['excerpt'] = $e;
         }
 

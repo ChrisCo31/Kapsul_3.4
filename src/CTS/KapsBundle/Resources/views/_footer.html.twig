@@ -1,14 +1,27 @@
 {% block footer %}
-    <div class="container">
-        <div id="footer">
-            <div class="card text-center">
-                <div class="card-body">
-                    <h4 class="card-title">icones de reseaux sociaux</h4>
-                    <h4 class="card-title">lien pour les mentions legales</h4>
-                    <h4 class="card-title">Lien pour formulaire de contact</h4>
-                    <h4 class="card-title">Lien about</h4>
+        <hr>
+        <footer>
+                <div class="container">
+                        <div class="row">
+                                <div class="col-lg-5">
+                                        <img id="logoFooter" src="{{ asset('img/logo_icon.png') }}" alt="logo" width="110"/>
+                                        <a href="https://facebook.com"><img class="imgSocial" src="{{ asset('img/facebook.png') }}" width="40" alt="facebook"></a>
+                                        <a href="https://linkedin.com"><img class="imgSocial" src="{{ asset('img/linkedin.png') }}" width="40" alt="linkedin"></a>
+                                        <a href="https://twitter.com"><img class="imgSocial" src="{{ asset('img/twitter.png') }}" width="40" alt="twitter"></a>
+                                        <a href="https://github.com"><img class="imgSocial" src="{{ asset('img/github.png') }}" width="40" alt="github"></a>
+                                </div>
+                                <div class="col-lg-4">
+                                        <a href="">Mentions légales</a>
+                                </div>
+                                <div class="col-lg-3">
+                                        <a href="">Contact</a>
+                                </div>
+                        </div>
+                        <div class="row" id="copyright">
+                                <p class="text-center">Copyright 2018 - ChrisCo31</p>
+                        </div>
                 </div>
-            </div>
-        </div>
-    </div>
+        </footer>
+
 {% endblock %}
+

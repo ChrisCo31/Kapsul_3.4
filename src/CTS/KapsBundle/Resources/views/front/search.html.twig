@@ -2,18 +2,67 @@
 {% block title %} Chercher sur Kapsul {% endblock %}
  {% block body %}
      <div id="content">
-         <form action="{{ path('Front_search') }}" method="post">
+
              {# The form #}
              <div class="form-group">
-                 <label for="search">Rechercher sur le site:</label>
-                 <input type="text" name="search" id="search" />
+                 <div class="row">
+                     <div class="col-lg-12">
+                        <h3><label for="search">Rechercher sur le site:</label><div></div></h3>
+                     </div>
+                 </div>
+                 <div class="row">
+                      <div class="col-lg-12">
+                        <input type="text" name="search" id="search" />
+                      </div>
+                 </div>
              </div>
              {# Gif #}
              <div class="loader"></div>
-         </form>
+
          {# Displays research results #}
-         <div id="result"></div>
-     </div>
-    
- {% endblock %}
+
+        <div id="result">
+        </div>
+
+</div>
+     <script>
+         $(document).ready(function(){
+             {# test : hide the gif #}
+             $('.loader').hide();
+
+             {# select search field and listen keyboard #}
+             $('#search').keyup(function(){
+                 {# test : color field #}
+                 $("#search").css("background-color", "#f90");
+                 {# define var = search field + listen #}
+                 $field = $(this);
+                 {# initialize an empty string in div result #}
+                 $('#result').html('');
+                 {# from the second character typing #}
+                 if($field.val().length>2)
+                 {
+                     {# use function Ajax of jquery with parameters #}
+                     $.ajax({
+                         type: 'POST',
+                         url: "{{ path('Front_ajax') }}",
+                         {# var search = value of the field search #}
+                         data: 'search='+$('#search').val(),
+                         {# display gif#}
+                         beforeSend:function(){
+                             $('.loader').stop().fadeIn();
+                         },
+
+                         {# display results #}
+                         success: function(data){
+
+                             $('.loader').fadeOut();
+                             $('#result').html(data);
+                             console.log(data);
+                         }
+                     });
+                 }
+             });
+         });
+     </script>
+{% endblock %}
 

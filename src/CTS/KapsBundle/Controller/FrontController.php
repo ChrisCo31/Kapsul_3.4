@@ -57,35 +57,54 @@ class FrontController extends Controller
     }
 
     /**
-     * @route("/media/{id}", name="Front_oneMedia")
+     * @route("/media/{id}/{page}", name="Front_oneMedia", requirements={"page"="\d+"})
+     *
      */
-    public function showMediaAction(Request $request, $id)
+    public function showMediaAction(Request $request, $id, $page = 1)
     {
         $em = $this->getDoctrine()->getManager();
         $media = $em->getRepository('CTSKapsBundle:Media')->find($id);
-        $articles = $em->getRepository('CTSKapsBundle:Article')->findBy(array('media' => $media));
         $picture =$media->getPicture();
-        
+
+        $articles = $this->get('cts_kaps.Paginator');
+        $NbPages = $this->get('cts_kaps.Paginator')->calculateNbPages($media);
+        $articles = $articles->paginate($media);
+        $cPage = $request->attributes->get('page');
+
+
+
         return $this->render('@CTSKapsBundle/front/media.html.twig', [
             'media' => $media,
             'picture' => $picture,
-            'articles' => $articles
+            'articles' => $articles,
+            'NbPages' => $NbPages,
+            'cpage' => $cPage
+
         ]);
     }
 
     /**
-     * @route("/search", name="Front_search")
-     */
+ * @route("/search", name="Front_search")
+ */
     public function searchAction(Request $request)
     {
-        $data = "SpaceX";
-        $em = $this->getDoctrine()->getManager();
-        $results = $em->getRepository('CTSKapsBundle:Article')->findArticleWith($data);
-        var_dump($results);
 
-        return $this->render('@CTSKapsBundle/front/search.html.twig', [
-            'results' => $results
-        ]);
+        return $this->render('@CTSKapsBundle/front/search.html.twig');
+    }
+    /**
+     * @route("/ajax", name="Front_ajax")
+     */
+    public function ajaxAction(Request $request)
+    {
+
+            $data=$request->request->get('search');
+            $em = $this->getDoctrine()->getManager();
+            $results = $em->getRepository('CTSKapsBundle:Article')->findArticleWith($data);
+            return $this->render('@CTSKapsBundle/front/ajax.html.twig', [
+                'results' => $results
+            ]);
+
+
     }
 
     /**

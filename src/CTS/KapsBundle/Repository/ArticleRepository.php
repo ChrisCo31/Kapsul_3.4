@@ -14,7 +14,7 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
     {
         $queryBuilder=$this->createQueryBuilder('a');
         $queryBuilder
-            ->select('a.title', 'a.excerpt')
+            ->select('a.title', 'a.excerpt','a.url')
             ->where ('a.title LIKE :key')
             ->orWhere('a.excerpt LIKE :key')
             ->orderBy('a.title', 'ASC')

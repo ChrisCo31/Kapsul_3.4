@@ -8,6 +8,8 @@
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/kapsul.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300|Palanquin:100|Source+Sans+Pro:300" rel="stylesheet">
+    <script src="{{ asset('js/jquery.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     {% block stylesheet %}{% endblock %}
 </head>
 <body>
@@ -26,46 +28,11 @@
             {% include '@CTSKapsBundle/_footer.html.twig' %}
         </div>
     </div>
-</body>
-{% block javascripts %}
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/d3js/5.7.0/d3.min.js"></script>
-    <script src="{{ asset('js/jquery.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script>
-        $(document).ready(function(){
-            {# test : hide the gif #}
-            $('.loader').hide();
 
-            {# select search field and listen keyboard #}
-            $('#search').keyup(function(){
-                {# test : color field #}
-                $("#search").css("background-color", "pink");
-                {# define var = search field + listen #}
-                $field = $(this);
-                {# initialize an empty string in div result #}
-                $('#result').html('');
-                {# from the second character typing #}
-                if($field.val().length>2)
-                {
-                    {# use function Ajax of jquery with parameters #}
-                    $.ajax({
-                        type: 'POST',
-                        url: "{{ path('Front_search') }}",
-                        {# var search = value of the field search #}
-                        data: 'search='+$('#search').val(),
-                    {# display gif#}
-                        beforeSend:function(){
-                            $('.loader').stop().fadeIn();
-                        },
-
-                        {# display results #}
-                        success: function(data){
-                            $('.loader').fadeOut();
-                            $('#result').html(data);
-                        }
-                    });
-                }
-            });
-        });
-    </script>
+{% block javascripts %}
 {% endblock %}
+</body>
+</html>
