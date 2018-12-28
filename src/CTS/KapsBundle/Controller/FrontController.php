@@ -66,20 +66,13 @@ class FrontController extends Controller
         $media = $em->getRepository('CTSKapsBundle:Media')->find($id);
         $picture =$media->getPicture();
 
-        $articles = $this->get('cts_kaps.Paginator');
-        $NbPages = $this->get('cts_kaps.Paginator')->calculateNbPages($media);
-        $articles = $articles->paginate($media);
-        $cPage = $request->attributes->get('page');
-
-
+        $pagination = $this->get('cts_kaps.Paginator');
+        $pagination = $pagination->paginate($media, $page);
 
         return $this->render('@CTSKapsBundle/front/media.html.twig', [
             'media' => $media,
             'picture' => $picture,
-            'articles' => $articles,
-            'NbPages' => $NbPages,
-            'cpage' => $cPage
-
+            'pagination' => $pagination
         ]);
     }
 
