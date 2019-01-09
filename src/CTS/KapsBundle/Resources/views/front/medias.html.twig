@@ -1,7 +1,6 @@
 {% extends '@CTSKapsBundle/layout.html.twig' %}
 {% block title %} Présentation des revues {% endblock %}
  {% block body %}
-
      <div class="row">
          <div class="col-lg-6">
              <h3>RESSOURCES EN BASE<div></div></h3>
@@ -13,22 +12,17 @@
              <a href="{{ path('Front_medias', {'direction': 'DESC'}) }}" class="btn btn-warning btn-lg" title="Lien 2">De Z à A</a>
          </div>
      </div>
-
-
-     <div class="row">
-
-     </div>
      <div class="row">
          {% for media in medias %}
-             <div class="col-lg-4">
+            <div class="col-md-4">
                  {% if media.picture is not null %}
-                 <a href="{{ path('Front_oneMedia', {'id':media.id})}}"><img src="{{ media.picture.src }}" alt="{{ media.picture.alt }}" height="230" width="230"></a>
+                 <a href="{{ path('Front_oneMedia', {'id':media.id})}}"><img class="card-img-top" src="{{ media.picture.src }}" alt="{{ media.picture.alt }}" style="height: 200px; width: 100%; display: block;"></a>
                  {% endif %}
-                 <h4 ><a href="{{ path('Front_oneMedia', {'id':media.id})}}">{{ media.name }}</a></h4>
+                 <div class="card-body">
+                 <h4 class="card-title"><a href="{{ path('Front_oneMedia', {'id':media.id})}}">{{ media.name }}</a></h4>
                  <p class="card-text"> {{ media.presentation }}</p>
-             </div>
+                 </div>
+            </div>
          {% endfor %}
      </div>
-
  {% endblock %}
-

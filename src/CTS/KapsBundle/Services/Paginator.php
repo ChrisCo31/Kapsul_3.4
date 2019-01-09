@@ -31,8 +31,7 @@ class Paginator
         $NbElements = count($articles);                     // count number of articles per media
         $NbPages = ceil($NbElements / $this->perPage);      // rounded to the next int
 
-
-        $offset = $page * $this->perPage ;
+        $offset = (($page-1) * $this->perPage) ;
         echo '</br>' ;
         echo $offset;
 

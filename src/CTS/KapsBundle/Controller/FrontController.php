@@ -65,10 +65,10 @@ class FrontController extends Controller
         $em = $this->getDoctrine()->getManager();
         $media = $em->getRepository('CTSKapsBundle:Media')->find($id);
         $picture =$media->getPicture();
+       
 
         $pagination = $this->get('cts_kaps.Paginator');
         $pagination = $pagination->paginate($media, $page);
-
         return $this->render('@CTSKapsBundle/front/media.html.twig', [
             'media' => $media,
             'picture' => $picture,

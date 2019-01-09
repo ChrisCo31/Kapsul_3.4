@@ -1,27 +1,41 @@
 {% block footer %}
         <hr>
+        
         <footer>
                 <div class="container">
+        
                         <div class="row">
                                 <div class="col-lg-5">
-                                        <img id="logoFooter" src="{{ asset('img/logo_icon.png') }}" alt="logo" width="110"/>
+                                        <div class="col-lg-5">
+                                                <div class="mention">
+                                                        <a href="">Mentions légales</a>
+                                                </div>
+                                        </div>
+                                        <div class="col-lg-1">
+                                                <div class="mention">
+                                                        <a href="">Contact</a>
+                                                </div>
+                                        </div>
+                                </div>        
+                                <div class="col-lg-5">
+                                        <a href="{{ path('Front_home') }}"><img id="logoFooter" src="{{ asset('img/logo_icon.png') }}" alt="logo" width="110"/></a>
                                         <a href="https://facebook.com"><img class="imgSocial" src="{{ asset('img/facebook.png') }}" width="40" alt="facebook"></a>
                                         <a href="https://linkedin.com"><img class="imgSocial" src="{{ asset('img/linkedin.png') }}" width="40" alt="linkedin"></a>
                                         <a href="https://twitter.com"><img class="imgSocial" src="{{ asset('img/twitter.png') }}" width="40" alt="twitter"></a>
-                                        <a href="https://github.com"><img class="imgSocial" src="{{ asset('img/github.png') }}" width="40" alt="github"></a>
                                 </div>
-                                <div class="col-lg-4">
-                                        <a href="">Mentions légales</a>
-                                </div>
-                                <div class="col-lg-3">
-                                        <a href="">Contact</a>
+                                <div class="col-lg-offset-1 col-lg-1"><a href="#"><img class="chevron_up" src="{{ asset('img/chevron-up.png') }}" width="40" alt="chevron" ></a></div>
+                                
                                 </div>
                         </div>
                         <div class="row" id="copyright">
                                 <p class="text-center">Copyright 2018 - ChrisCo31</p>
                         </div>
                 </div>
+                 <p>
+                
+                </p>
         </footer>
+
 
 {% endblock %}
 

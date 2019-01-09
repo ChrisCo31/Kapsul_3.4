@@ -17,6 +17,7 @@ use Goutte\Client;
 use GuzzleHttp\Client as GuzzleClient;
 use CTS\KapsBundle\Entity\Media;
 use CTS\KapsBundle\Entity\Selector;
+use CTS\KapsBundle\Services\Formatting;
 
 
 
@@ -24,11 +25,13 @@ class Scraping
 {
     private $client;
     private $em;
+    private $formatting;
 
-    public function __construct(EntityManager $em)
+    public function __construct(EntityManager $em, Formatting $formatting)
     {
         $this->client = new Client();
         $this->em = $em;
+        $this->formatting = $formatting;
     }
     /**
      * @param $url
@@ -48,28 +51,30 @@ class Scraping
 
         // Scraping
         $crawler = $this->client->request('GET', $url);
-
+        $src = $this->formatting->formattingSrc($url);
+        $e = $this->formatting->formattingE($url);
+        
         // Retrieve Picture
         if($selectorImg!==NULL)
         {
             $i = $crawler
                 ->filterXPath($selectorImg)
-                ->extract(array('src','alt'));
+                ->extract(array( $src,'alt'));
             $result['image'] = $i;
         }
+        
         // Retrieve Title
         $t = $crawler
             ->filterXPath($selectorTitle)
             ->extract(array('_text'));
         $result['title'] = $t;
 
-
         // Retrieve Excerpt
         if($selectorExcerpt!==NULL)
         {
             $e = $crawler
                 ->filterXPath($selectorExcerpt)
-                ->extract(array('_text'));
+                ->extract(array($e));
             $result['excerpt'] = $e;
         }
 
@@ -78,27 +83,21 @@ class Scraping
             ->filterXPath($selectorLink)
             ->extract(array('href'));
         $result['link'] = $a;
-
+       
         // create a loop to set objects
         foreach($result['title'] as $key => $title)
         {
             if(!$article = $this->em->getRepository("CTSKapsBundle:Article")->findOneBy(array('title' => $title)))
-            {
+            {   // Persist
+           
                 // Fill attributes
                 $article = new Article();
                 $article->setTitle($title);
                 if(!empty($result['excerpt']))
                 {
-                    $article->setExcerpt($result['excerpt'][$key]);
+                    $article->setExcerpt($result['excerpt'][$key]);   
                 }
-
-                if(strncmp(($result['link'][$key]), 'HTTP', 4) =='http')
-                {
-                    $article->setUrl($result['link'][$key]);
-                }else{
-                    $url= trim($url, '/');
-                    $article->setUrl($url.$result['link'][$key]);
-                }
+                $formatting = $this->formatting->formattingUrl($result['link'][$key], $url, $article);
 
                 $article->setDate(new \DateTime());
 
@@ -108,14 +107,13 @@ class Scraping
                 $article->setPicture($picture);
 
                 $article->setMedia($media);
-
-                // Persist
                 $this->em->persist($article);
                 $this->em->flush();
             }
-	    }
-    }
+        }
+	}
 }
+
 
 /*
 ->filterXPath('//div[@class="image-container"]/a/img |

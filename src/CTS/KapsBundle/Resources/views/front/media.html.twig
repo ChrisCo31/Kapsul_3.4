@@ -15,7 +15,7 @@
                     </div>
                     <div class="col-lg-offset-1 col-lg-3">
                         {% if media.picture is not null %}
-                            <a href="{{ media.url }}"><img src="{{ media.picture.src }}" alt="{{ media.picture.alt }}" height="250"></a>
+                             <div class="image"><a href="{{ media.url }}"><img src="{{ media.picture.src }}" alt="{{ media.picture.alt }}" style="height: 200px; width: 100%; display: block;"></a></div>
                         {% endif %}
                     </div>
                 </div>
@@ -29,19 +29,24 @@
             </div>
             <div class="row">
                 {% for element in pagination.elements %}
-                    <div class="col-lg-4">
-                        {% if element.picture is not null %}
-                            <img src="{{ element.picture.src }}" alt="{{ element.picture.alt }}" height="200">
-                        {% endif %}
-                        <h4><a href="{{ element.url }}">{{ element.title }}</a></h4>
-                        <p class="card-text"> {{ element.excerpt |truncate(120) }}</p>
+               
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            {% if element.picture is not null %}
+                                <img class="card-img-top" src="{{ element.picture.src }}" alt="{{ element.picture.alt }}" style="height: 200px; width: 100%; display: block;">
+                            {% endif %}
+                            <div class="card-body">
+                                <h4 class="card-title" style="height: 50px; width: 100%"; ><a href="{{ element.url }}">{{ element.title  }}</a></h4>
+                                <p class="card-text" style="height: 50px; width: 100%"; > {{ element.excerpt |truncate(120) }}</p>
+                            </div>
+                        </div>
                     </div>
                 {% endfor %}
             </div>
         </div>
         <div class="paginate">
             <div class="row">
-                {% for i in 1..pagination.nbPages - 1 %}
+                {% for i in 1..pagination.nbPages %}
                     <ul>
                         <a href="{{path('Front_oneMedia', {'id':media.id, 'page': i })}}"><li>{{i}}</li></a>
                     </ul>
