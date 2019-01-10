@@ -97,15 +97,13 @@ class Scraping
                 {
                     $article->setExcerpt($result['excerpt'][$key]);   
                 }
-                $formatting = $this->formatting->formattingUrl($result['link'][$key], $url, $article);
-
+                $formatting = $this->formatting->formattingUrl($result, $key, $article, $url);
                 $article->setDate(new \DateTime());
 
                 $picture = new Picture();
                 $picture->setSrc($result['image'][$key][0]);
                 $picture->setAlt('ImageArticle');
                 $article->setPicture($picture);
-
                 $article->setMedia($media);
                 $this->em->persist($article);
                 $this->em->flush();

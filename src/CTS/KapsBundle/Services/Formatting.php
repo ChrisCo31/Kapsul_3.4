@@ -13,14 +13,18 @@ class Formatting
      * @param $url
      * @param $article
      */
-    public function formattingUrl($result, $url, $article)
+    public function formattingUrl(array $result, $key, $article, $url)
     {
-        if (strncmp($result, 'HTTP', 4) == 'http') {
-            $article->setUrl($result['key'][$key]);
+
+        $chain = (strncmp($result['link'][$key], 'HTTP', 4));
+
+        if ($chain == 1) {
+            $r =$article->setUrl($result['link'][$key]);
         } else {
             $url = trim($url, '/');
-            $t = $article->setUrl($url . $result);
+           $r = $article->setUrl($url . $result['link'][$key]);
         }
+        return $r;
     }
     /**
      * @param $url

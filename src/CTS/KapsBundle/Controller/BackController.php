@@ -93,7 +93,7 @@ class BackController extends Controller
         // 4. Persist results
 
         // 5. success message
-        $this->addFlash('success', 'Scraping réussi');
+        $this->addFlash('success', 'Le scraping est à jour pour ce média');
         // 6. Render twig file
         return $this->render('@CTSKapsBundle/back/scrap.html.twig');
 
@@ -130,7 +130,7 @@ class BackController extends Controller
         $media = $em->getRepository('CTSKapsBundle:Media')->find($id);
         $em->remove($media);
         $em->flush();
-        $this->addFlash('success', 'Bien supprimé avec succès');
+        $this->addFlash('success', 'Suppression réussie');
 
         return $this->redirectToRoute('Back_admin');
     }
