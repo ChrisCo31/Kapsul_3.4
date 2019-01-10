@@ -94,3 +94,4 @@ class Picture
         return $this->alt;
     }
 }
+

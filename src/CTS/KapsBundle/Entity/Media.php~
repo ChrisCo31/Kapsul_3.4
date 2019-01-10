@@ -3,6 +3,8 @@
 namespace CTS\KapsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 
 /**
@@ -10,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="media")
  * @ORM\Entity(repositoryClass="CTS\KapsBundle\Repository\MediaRepository")
+ * @UniqueEntity("name")
  */
 class Media
 {
@@ -17,10 +20,6 @@ class Media
      * @ORM\OneToMany(targetEntity="CTS\KapsBundle\Entity\Selector", mappedBy ="media", cascade={"all"})
      */
     private $selectors;
-    /**
-     * @ORM\ManyToMany(targetEntity="CTS\KapsBundle\Entity\Tag", mappedBy="media", cascade={"all"})
-     */
-    private $tags;
     /**
      * @ORM\OneToOne(targetEntity="CTS\KapsBundle\Entity\Picture", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
@@ -45,57 +44,56 @@ class Media
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "le nom de la revue doit faire au moins {{ limit }} characters long",
+     *      maxMessage = "le nom de la revue doit faire au plus {{ limit }} characters"
+     * )
      */
     private $name;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="url", type="string", length=255)
+     * @Assert\NotBlank
      */
     private $url;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="presentation", type="text")
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 25,
+     *      max = 500,
+     *      minMessage = "la presentation doit faire au moins {{ limit }} caracteres",
+     *      maxMessage = "la presentation doit faire au plus {{ limit }} caracteres"
+     * )
      */
     private $presentation;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="support", type="string", length=255)
-     */
-    private $support;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="frequency", type="string", length=255)
-     */
-    private $frequency;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="lang", type="string", length=255)
-     */
-    private $lang;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="price", type="string", length=255)
-     */
-    private $price;
-
-    /**
      * @var \DateTime
-     *
      * @ORM\Column(name="createdAt", type="datetime")
      */
     private $createdAt;
+
+    /**
+     * @var string
+     * @ORM\Column(name="universe", length=255)
+     */
+    private $universe;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->selectors = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->createdAt = new \DateTime();
+    }
 
     /**
      * Get id
@@ -180,102 +178,6 @@ class Media
     }
 
     /**
-     * Set support
-     *
-     * @param string $support
-     *
-     * @return Media
-     */
-    public function setSupport($support)
-    {
-        $this->support = $support;
-
-        return $this;
-    }
-
-    /**
-     * Get support
-     *
-     * @return string
-     */
-    public function getSupport()
-    {
-        return $this->support;
-    }
-
-    /**
-     * Set frequency
-     *
-     * @param string $frequency
-     *
-     * @return Media
-     */
-    public function setFrequency($frequency)
-    {
-        $this->frequency = $frequency;
-
-        return $this;
-    }
-
-    /**
-     * Get frequency
-     *
-     * @return string
-     */
-    public function getFrequency()
-    {
-        return $this->frequency;
-    }
-
-    /**
-     * Set lang
-     *
-     * @param string $lang
-     *
-     * @return Media
-     */
-    public function setLang($lang)
-    {
-        $this->lang = $lang;
-
-        return $this;
-    }
-
-    /**
-     * Get lang
-     *
-     * @return string
-     */
-    public function getLang()
-    {
-        return $this->lang;
-    }
-
-    /**
-     * Set price
-     *
-     * @param string $price
-     *
-     * @return Media
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
-    /**
-     * Get price
-     *
-     * @return string
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
-
-    /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
@@ -297,6 +199,30 @@ class Media
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * Set universe
+     *
+     * @param string $universe
+     *
+     * @return Media
+     */
+    public function setUniverse($universe)
+    {
+        $this->universe = $universe;
+
+        return $this;
+    }
+
+    /**
+     * Get universe
+     *
+     * @return string
+     */
+    public function getUniverse()
+    {
+        return $this->universe;
     }
 
     /**
@@ -323,50 +249,6 @@ class Media
         return $this->picture;
     }
 
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->tags = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->selectors = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add theme
-     *
-     * @param \CTS\KapsBundle\Entity\Tag $tag
-     *
-     * @return Media
-     */
-    public function addTag(\CTS\KapsBundle\Entity\Tag $tag)
-    {
-        $this->tag[] = $tag;
-
-        return $this;
-    }
-
-    /**
-     * Remove theme
-     *
-     * @param \CTS\KapsBundle\Entity\Tag $tag
-     */
-    public function removeTag(\CTS\KapsBundle\Entity\Tag $tag)
-    {
-        $this->tags->removeElement($tag);
-    }
-
-    /**
-     * Get themes
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getTags()
-    {
-        return $this->tags;
-    }
-
     /**
      * Add selector
      *
@@ -374,7 +256,7 @@ class Media
      *
      * @return Media
      */
-    public function addSelector(\AppBundle\Entity\Selector $selector)
+    public function addSelector(\CTS\KapsBundle\Entity\Selector $selector)
     {
         $this->selectors[] = $selector;
 
@@ -386,7 +268,7 @@ class Media
      *
      * @param \AppBundle\Entity\Selector $selector
      */
-    public function removeSelector(\AppBundle\Entity\Selector $selector)
+    public function removeSelector(\CTS\KapsBundle\Entity\Selector $selector)
     {
         $this->selectors->removeElement($selector);
     }

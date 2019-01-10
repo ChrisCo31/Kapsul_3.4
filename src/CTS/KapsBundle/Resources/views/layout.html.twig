@@ -10,6 +10,7 @@
     <meta property="og:description"   content="Your description" />
     <meta property="og:image"         content="https://oc-static.imgix.net/prod/images/paths/illustrations/PROJECTMGMT_DIGITAL.png?auto=compress,format&q=80&w=468&dpr=1" />
     <title>{% block title %}Kapsul{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('img/fav.ico') }}" />
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/kapsul.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300|Palanquin:100|Source+Sans+Pro:300" rel="stylesheet">
@@ -18,12 +19,9 @@
     {% block stylesheet %}{% endblock %}
 </head>
 <body>
-    <div class="container">
-        <div id="navbar">
-            {% include '@CTSKapsBundle/_navbar.html.twig' %}
-        </div>
+    <div class="container-fluid">
         <div id="jumbotron">
-            {% include '@CTSKapsBundle/_jumbotron.html.twig' %}          
+            {% include '@CTSKapsBundle/_jumbotron.html.twig' %}
         </div>
         <div id="content">
             {% block body %}
@@ -37,22 +35,6 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/d3js/5.7.0/d3.min.js"></script>
     <!-- Load Facebook SDK for JavaScript -->
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-
-    <!-- Your share button code -->
-    <div class="fb-share-button"
-         data-href="https://www.your-domain.com/your-page.html"
-         data-layout="button_count">
-    </div>
-
-
 {% block javascripts %}
 {% endblock %}
 </body>

@@ -10,6 +10,8 @@ namespace CTS\KapsBundle\Controller;
 
 
 use CTS\KapsBundle\Entity\Picture;
+use CTS\KapsBundle\Entity\User;
+use CTS\KapsBundle\Form\UserType;
 use CTS\KapsBundle\Repository\MediaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -77,13 +79,14 @@ class FrontController extends Controller
     }
 
     /**
- * @route("/search", name="Front_search")
- */
+    * @route("/search", name="Front_search")
+    */
     public function searchAction(Request $request)
     {
 
         return $this->render('@CTSKapsBundle/front/search.html.twig');
     }
+
     /**
      * @route("/ajax", name="Front_ajax")
      */
@@ -101,13 +104,26 @@ class FrontController extends Controller
     }
 
     /**
-     * @route("/contact", name="Front_contact")
+     * @route("/register", name="Front_register")
      */
-    public function contactAction()
+    public function contactAction(Request $request)
     {
-        return $this->render('@CTSKapsBundle/front/contact.html.twig');
+        $user = New User();
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+            $this->addFlash('success', 'Vous etes bien enregistré sur Kapsul');
+            return $this->redirectToRoute('login');
+        }
+        return $this->render('@CTSKapsBundle/front/register.html.twig', [
+            'form' => $form->createView(),
+            'user'=> $user
+        ]);
     }
-
 
     /**
      * @route("/contribute", name="Front_contribute")

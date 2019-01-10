@@ -1,41 +1,26 @@
 {% block footer %}
-        <hr>
-        
-        <footer>
-                <div class="container">
-        
-                        <div class="row">
-                                <div class="col-lg-5">
-                                        <div class="col-lg-5">
-                                                <div class="mention">
-                                                        <a href="">Mentions légales</a>
-                                                </div>
-                                        </div>
-                                        <div class="col-lg-1">
-                                                <div class="mention">
-                                                        <a href="">Contact</a>
-                                                </div>
-                                        </div>
-                                </div>        
-                                <div class="col-lg-5">
-                                        <a href="{{ path('Front_home') }}"><img id="logoFooter" src="{{ asset('img/logo_icon.png') }}" alt="logo" width="110"/></a>
-                                        <a href="https://facebook.com"><img class="imgSocial" src="{{ asset('img/facebook.png') }}" width="40" alt="facebook"></a>
-                                        <a href="https://linkedin.com"><img class="imgSocial" src="{{ asset('img/linkedin.png') }}" width="40" alt="linkedin"></a>
-                                        <a href="https://twitter.com"><img class="imgSocial" src="{{ asset('img/twitter.png') }}" width="40" alt="twitter"></a>
-                                </div>
-                                <div class="col-lg-offset-1 col-lg-1"><a href="#"><img class="chevron_up" src="{{ asset('img/chevron-up.png') }}" width="40" alt="chevron" ></a></div>
-                                
-                                </div>
-                        </div>
-                        <div class="row" id="copyright">
-                                <p class="text-center">Copyright 2018 - ChrisCo31</p>
-                        </div>
-                </div>
-                 <p>
-                
-                </p>
-        </footer>
+<footer class="footer">
+    <div class="col-md-12">
+        <div class="row" id="element">
+            <div class="col-lg-3 col-lg-push-1">
+
+                <a href="https://mdbootstrap.com/education/bootstrap/"> Chrisco31- 2019</a>
+                <p> christel.coeur@crackthesky.fr</p>
+
+            </div>
+            <div class="col-lg-6 col-lg-push-2">
+                <a href="https://facebook.com"><img class="imgSocial" src="{{ asset('img/facebook.png') }}" width="40" alt="facebook"></a>
+                <a href="https://linkedin.com"><img class="imgSocial" src="{{ asset('img/linkedin.png') }}" width="40" alt="linkedin"></a>
+                <a href="https://twitter.com"><img class="imgSocial" src="{{ asset('img/twitter.png') }}" width="40" alt="twitter"></a>
+            </div>
+            <div class="col-lg-3">
+                <a href="https://mdbootstrap.com/education/bootstrap/"> Mentions legales</a>
+            </div>
+        </div>
+    </div>
 
 
+</footer>
 {% endblock %}
+
 
