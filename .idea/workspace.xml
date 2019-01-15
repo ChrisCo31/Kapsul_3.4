@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f694558-e127-47ed-8c33-830ac18fb9f2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Entity/Article.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Entity/Article.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Entity/Media.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Entity/Media.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Entity/Selector.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Entity/Selector.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Entity/Tag.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/EventListener/UniqueTag.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Form/SelectorType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Form/SelectorType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Form/TagType.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Repository/TagRepository.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/config/services.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/config/services.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/back/_FormSelector.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Resources/views/back/_FormSelector.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Services/Scraping.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Services/Scraping.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Entity/User.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,7 +24,30 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand />
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="kapsdb@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="kapsdb@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="kapsdb@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="kapsdb: schema" type="c314c289:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="kapsdb@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="kapsdb: schema" type="c314c289:MysqlImplModel$Schema" />
+        <item name="u_ser: table" type="98d5ac3d:MysqlImplModel$Table" />
+      </path>
+    </expand>
     <select />
   </component>
   <component name="FUSProjectUsageTrigger">
@@ -135,65 +146,7 @@
     <favorites_list name="Kapsul_3.4" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CTS/KapsBundle/Controller/BackController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="784">
-              <caret line="54" column="8" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="8" />
-              <folding>
-                <element signature="e#129#162#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CTS/KapsBundle/Entity/Selector.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="124" selection-start-line="124" selection-end-line="124" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/CTS/KapsBundle/Services/Scraping.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1442">
-              <caret line="108" column="9" selection-start-line="108" selection-start-column="9" selection-end-line="108" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CTS/KapsBundle/Entity/Article.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2962">
-              <caret line="202" column="7" selection-start-line="202" selection-start-column="7" selection-end-line="202" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CTS/KapsBundle/Entity/Media.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="88" column="27" selection-start-line="88" selection-start-column="27" selection-end-line="88" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/CTS/KapsBundle/Entity/Picture.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="28" column="17" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -352,6 +305,12 @@
             <path>
               <item name="Kapsul_3.4" type="b2602c69:ProjectViewProjectNode" />
               <item name="Kapsul_3.4" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Kapsul_3.4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Kapsul_3.4" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -381,6 +340,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="CTS" type="462c0819:PsiDirectoryNode" />
               <item name="KapsBundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Kapsul_3.4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Kapsul_3.4" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="CTS" type="462c0819:PsiDirectoryNode" />
+              <item name="KapsBundle" type="462c0819:PsiDirectoryNode" />
               <item name="Repository" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -389,7 +356,53 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="CTS" type="462c0819:PsiDirectoryNode" />
               <item name="KapsBundle" type="462c0819:PsiDirectoryNode" />
-              <item name="Services" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Kapsul_3.4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Kapsul_3.4" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="CTS" type="462c0819:PsiDirectoryNode" />
+              <item name="KapsBundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Kapsul_3.4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Kapsul_3.4" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="CTS" type="462c0819:PsiDirectoryNode" />
+              <item name="KapsBundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="back" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Kapsul_3.4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Kapsul_3.4" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="CTS" type="462c0819:PsiDirectoryNode" />
+              <item name="KapsBundle" type="462c0819:PsiDirectoryNode" />
+              <item name="Resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="front" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Kapsul_3.4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Kapsul_3.4" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Kapsul_3.4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Kapsul_3.4" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Kapsul_3.4" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Kapsul_3.4" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -460,13 +473,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="416287000" />
+    <option name="totallyTimeSpent" value="416288000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
-    <editor active="true" />
+    <frame x="1912" y="-102" width="1936" height="1176" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1748401" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18923241" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" weight="0.32995737" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -486,7 +498,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.108742006" />
+      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.11247335" />
     </layout>
     <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17004265" />
@@ -570,20 +582,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://a06533ac-f45d-40a7-82a9-e53d4b767498/schema/kapsdb/table/tag_article">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CTS/KapsBundle/Repository/TagRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="das://a06533ac-f45d-40a7-82a9-e53d4b767498/schema/kapsdb/table/tag_article" />
+    <entry file="file://$PROJECT_DIR$/src/CTS/KapsBundle/Repository/TagRepository.php" />
     <entry file="file://$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/DependencyInjection/ContainerAwareInterface.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -657,20 +657,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CTS/KapsBundle/EventListener/UniqueTag.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="640">
-          <caret line="46" column="25" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CTS/KapsBundle/Entity/Tag.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="752">
-          <caret line="47" selection-start-line="47" selection-end-line="47" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CTS/KapsBundle/EventListener/UniqueTag.php" />
+    <entry file="file://$PROJECT_DIR$/src/CTS/KapsBundle/Entity/Tag.php" />
     <entry file="file://$PROJECT_DIR$/src/CTS/KapsBundle/Resources/config/services.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="64">
@@ -678,13 +666,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CTS/KapsBundle/Form/TagType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="592">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CTS/KapsBundle/Form/TagType.php" />
     <entry file="file://$PROJECT_DIR$/src/CTS/KapsBundle/Repository/MediaRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
