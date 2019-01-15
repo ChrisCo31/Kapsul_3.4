@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4f694558-e127-47ed-8c33-830ac18fb9f2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/CTS/KapsBundle/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/CTS/KapsBundle/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -473,7 +473,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="416288000" />
+    <option name="totallyTimeSpent" value="416530000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-102" width="1936" height="1176" extended-state="6" />
