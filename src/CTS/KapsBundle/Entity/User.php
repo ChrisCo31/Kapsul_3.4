@@ -45,7 +45,7 @@ class User implements UserInterface, \Serializable
      *
      * @ORM\Column(name="role", type="string", length=255)
      */
-    private $role = 'membre';
+    private $role = 'ROLE_USER';
 
     /**
      * Get id
@@ -130,7 +130,7 @@ class User implements UserInterface, \Serializable
      */
     public function getRoles()
     {
-        return ['ROLE_ADMIN'];
+        return [$this->role];
     }
     /**
      * Returns the salt that was originally used to encode the password.

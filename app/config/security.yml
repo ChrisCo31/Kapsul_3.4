@@ -32,6 +32,8 @@ security:
     access_control:
     # require ROLE_ADMIN for /admin*
         - { path: ^/admin, roles: ROLE_ADMIN }
+    # require ROLE_USER for /member*
+        - { path: ^/member, roles: ROLE_USER }
 
     encoders:
         CTS\KapsBundle\Entity\User:

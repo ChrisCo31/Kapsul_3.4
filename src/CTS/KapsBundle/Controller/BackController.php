@@ -24,14 +24,17 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security ;
 
 class BackController extends Controller
 {
     /**
      * @route("/admin", name="Back_admin")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function indexAction(Request $request)
     {
+
         $em = $this->getDoctrine()->getManager();
         $listMedia = $em->getRepository('CTSKapsBundle:Media')->findAll();
         $media = new Media();
@@ -133,6 +136,13 @@ class BackController extends Controller
         $this->addFlash('success', 'Suppression réussie');
 
         return $this->redirectToRoute('Back_admin');
+    }
+    /**
+     * @Route("/member/{username}", name="Back_member")
+     */
+    public function accessMember()
+    {
+        return $this->render('@CTSKapsBundle/back/member.html.twig');
     }
 
     /**
