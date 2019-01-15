@@ -21,7 +21,7 @@ class Media
      */
     private $selectors;
     /**
-     * @ORM\OneToOne(targetEntity="CTS\KapsBundle\Entity\Picture", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="CTS\KapsBundle\Entity\Picture", cascade={"all"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $picture;

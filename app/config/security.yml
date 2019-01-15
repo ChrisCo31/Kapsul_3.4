@@ -1,17 +1,13 @@
 # To get started with security, check out the documentation:
 # https://symfony.com/doc/current/security.html
 security:
+
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
-        in_memory:
-            memory:
-                users:
-                    chrisco:
-                        password: $2y$12$Z0pymxh9Jzc2UheZzPgbxOei89Yx1/2EEij7KywTJEYyJhPVWKjLO
-                        roles: 'ROLE_USER'
-                    admin:
-                        password: $2y$12$vFIfYRqLwboJwsEs3/9IFOUeR6NBECM8x9dB.3QWImhGdQaUoBTvG
-                        roles: 'ROLE_ADMIN'
+        from_database:
+            entity:
+                class: CTS\KapsBundle\Entity\User
+                property: username
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -38,6 +34,6 @@ security:
         - { path: ^/admin, roles: ROLE_ADMIN }
 
     encoders:
-        Symfony\Component\Security\Core\User\User:
+        CTS\KapsBundle\Entity\User:
             algorithm: bcrypt
             cost: 12

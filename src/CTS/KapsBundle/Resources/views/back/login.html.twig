@@ -4,11 +4,11 @@
 {% block body %}
     <div class="container mt-4">
 
-        {% if error %}
-            <div class="alert alert-danger">
-                {{ error.messageKey | trans(error.messagedata, 'security') }}
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
             </div>
-        {% endif %}
+        {% endfor %}
 
         <form action="{{ path('login') }}" method="post">
             <div class="form-group">

@@ -1,3 +1,6 @@
+html, body{
+    height: 100%;
+}
 a
 {
     color: black;
@@ -7,15 +10,14 @@ body
     background-color: #dedede;
 }
 /*......................Footer...........*/
-
-
-#footer
+footer
 {
     width:auto;
     display:block;
     height:24px;
-    margin-top: 200px;
-    margin-bottom: 0px;
+    margin-top: 350px;
+    bottom: 0px;
+
 }
 .col-lg-3>a
 {
@@ -34,7 +36,6 @@ body
     margin-top: 60px;
 }
 /*............ content..........*/
-
 h3>div {
     border-bottom:2px solid #790102;
     position:relative;
@@ -60,7 +61,6 @@ hr{
     height:40px;
     width:40px;
 }
-
 .jumbotron {
     margin-bottom: 0px;
     background-image: url(../img/ban.png);
@@ -90,7 +90,11 @@ hr{
     margin-top: 40px;
 }
 /*........................Navbar................*/
-.navbar-nav >li >a {
+.navbar-inverse {
+    background:transparent;
+    border:none;
+}
+.navbar-inverse .navbar-nav >li >a {
     margin-top: 20px;
     font-size: 22px;
     font-weight: bold;
@@ -98,23 +102,22 @@ hr{
     font-family: 'Josefin Sans', sans-serif;
     border-radius: 10px;
 }
-.navbar-nav > li >a:hover {
+.navbar-inverse .navbar-nav >li >a:hover {
     background-color:#790102;
     color:#D1D2D4;
     border-radius: 10px;
 }
 .navbar-header
 {
-    padding-top: 10px;
+    padding-top: 20px;
 }
-
+/*........................Table................*/
 .table {
     width: 100%;
     max-width: 100%;
     margin-bottom: 20px;
 }
-
-
+/*........................Pagintation................*/
 .paginate{
     padding: 30px 0;
     text-align: center;
@@ -144,4 +147,17 @@ hr{
     border-color: #2b542c;
     border-radius: 8px;
     color: #D1D2D4;
+}
+/*................... Button ...........................*/
+.btn-secondary.btn
+{
+    color: #FFFFFF;
+    background-color: #f0ad4e;
+    border-color: #eea236;
+}
+.btn-secondary.btn:hover
+{
+    color: #FFFFFF;
+    background-color: #EC971f;
+    border-color: #EC911A;
 }

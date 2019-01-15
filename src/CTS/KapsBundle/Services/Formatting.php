@@ -17,8 +17,11 @@ class Formatting
     {
 
         $chain = (strncmp($result['link'][$key], 'HTTP', 4));
+        $chain2 = (strncmp($result['link'][$key], '//BONUS', 7));
+        var_dump($chain2);
 
-        if ($chain == 1) {
+
+        if ($chain == 1 || $chain2 == 1) {
             $r =$article->setUrl($result['link'][$key]);
         } else {
             $url = trim($url, '/');

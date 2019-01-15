@@ -4,37 +4,33 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:url"           content="https://openclassrooms.com/fr/dashboard" />
-    <meta property="og:type"          content="website" />
-    <meta property="og:title"         content="Kapsul : mags, revues et blogs" />
-    <meta property="og:description"   content="Your description" />
-    <meta property="og:image"         content="https://oc-static.imgix.net/prod/images/paths/illustrations/PROJECTMGMT_DIGITAL.png?auto=compress,format&q=80&w=468&dpr=1" />
     <title>{% block title %}Kapsul{% endblock %}</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('img/fav.ico') }}" />
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/kapsul.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300|Palanquin:100|Source+Sans+Pro:300" rel="stylesheet">
     <script src="{{ asset('js/jquery.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
     {% block stylesheet %}{% endblock %}
 </head>
 <body>
-    <div class="container-fluid">
-        <div id="jumbotron">
-            {% include '@CTSKapsBundle/_jumbotron.html.twig' %}
-        </div>
-        <div id="content">
-            {% block body %}
-            {% endblock %}
-        </div>
-        <div id="footer">
-            {% include '@CTSKapsBundle/_footer.html.twig' %}
-        </div>
+<div class="container-fluid">
+    <div id="jumbotron">
+        {% include '@CTSKapsBundle/_jumbotron.html.twig' %}
     </div>
+    <div id="content">
+        {% block body %}
+        {% endblock %}
+    </div>
+    <div id="footer">
+        {% include '@CTSKapsBundle/_footer.html.twig' %}
+    </div>
+</div>
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/d3js/5.7.0/d3.min.js"></script>
-    <!-- Load Facebook SDK for JavaScript -->
+<script src="https://ajax.googleapis.com/ajax/libs/d3js/5.7.0/d3.min.js"></script>
+
+<!-- Load Facebook SDK for JavaScript -->
 {% block javascripts %}
 {% endblock %}
 </body>

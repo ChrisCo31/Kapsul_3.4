@@ -19,9 +19,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use CTS\KapsBundle\Services\Scraping;
 use CTS\KapsBundle\Entity\Tag;
-
-
-
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 
 class FrontController extends Controller
@@ -92,32 +90,34 @@ class FrontController extends Controller
      */
     public function ajaxAction(Request $request)
     {
-
             $data=$request->request->get('search');
             $em = $this->getDoctrine()->getManager();
             $results = $em->getRepository('CTSKapsBundle:Article')->findArticleWith($data);
             return $this->render('@CTSKapsBundle/front/ajax.html.twig', [
                 'results' => $results
             ]);
-
-
     }
 
     /**
      * @route("/register", name="Front_register")
      */
-    public function contactAction(Request $request)
+    public function contactAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
     {
         $user = New User();
+        //!$user= $em->getRepository("CTSKapsBundle:User")->findOneBy(array('email' => $email))
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid())
         {
+            $password = $passwordEncoder->encodePassword($user, $user->getPassword());
+            $user->setPassword($password);
+
             $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
-            $this->addFlash('success', 'Vous etes bien enregistré sur Kapsul');
-            return $this->redirectToRoute('login');
+                $em->persist($user);
+                $em->flush();
+                $this->addFlash('success', 'Vous etes bien enregistré sur Kapsul');
+                return $this->redirectToRoute('login');
+
         }
         return $this->render('@CTSKapsBundle/front/register.html.twig', [
             'form' => $form->createView(),

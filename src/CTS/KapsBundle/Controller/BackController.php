@@ -49,7 +49,7 @@ class BackController extends Controller
         return $this->render('@CTSKapsBundle/back/index.html.twig', ['form' => $form->createView(), 'listMedia' => $listMedia]);
     }
     /**
-     * @route("/selector/{id}", name="Back_selector")
+     * @route("/adminselector/{id}", name="Back_selector")
      */
     public function selectorAction(Request $request, $id)
     {
@@ -77,7 +77,7 @@ class BackController extends Controller
     }
 
     /**
-     * @route("/scrap/{id}", name="Back_scrap")
+     * @route("/adminscrap/{id}", name="Back_scrap")
      */
     public function scrapingAction(Request $request,$id)
 
@@ -99,7 +99,7 @@ class BackController extends Controller
 
     }
     /**
-     * @route("/edit/{id}", name="Back_edit")
+     * @route("/adminedit/{id}", name="Back_edit")
      */
     public function EditAction(Request $request,$id)
     {
@@ -122,7 +122,7 @@ class BackController extends Controller
             ]);
     }
     /**
-     * @Route("/delete/{id}", name="Back_delete")
+     * @Route("/admindelete/{id}", name="Back_delete")
      */
     public function delete(Media $media, Request $request, $id)
     {
