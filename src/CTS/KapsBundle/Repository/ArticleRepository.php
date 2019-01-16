@@ -10,4 +10,15 @@ namespace CTS\KapsBundle\Repository;
  */
 class ArticleRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findArticleWith($data)
+    {
+        $queryBuilder=$this->createQueryBuilder('a');
+        $queryBuilder
+            ->select('a.title', 'a.excerpt','a.url')
+            ->where ('a.title LIKE :key')
+            ->orWhere('a.excerpt LIKE :key')
+            ->orderBy('a.title', 'ASC')
+            ->setParameter('key', '%'.$data.'%');
+        return $queryBuilder->getQuery()->getResult();
+    }
 }

@@ -3,6 +3,8 @@
 namespace CTS\KapsBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 
 /**
@@ -10,6 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="media")
  * @ORM\Entity(repositoryClass="CTS\KapsBundle\Repository\MediaRepository")
+ * @UniqueEntity("name")
  */
 class Media
 {
@@ -18,7 +21,7 @@ class Media
      */
     private $selectors;
     /**
-     * @ORM\OneToOne(targetEntity="CTS\KapsBundle\Entity\Picture", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="CTS\KapsBundle\Entity\Picture", cascade={"all"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $picture;
@@ -41,33 +44,44 @@ class Media
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "le nom de la revue doit faire au moins {{ limit }} characters long",
+     *      maxMessage = "le nom de la revue doit faire au plus {{ limit }} characters"
+     * )
      */
     private $name;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="url", type="string", length=255)
+     * @Assert\NotBlank
      */
     private $url;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="presentation", type="text")
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 25,
+     *      max = 500,
+     *      minMessage = "la presentation doit faire au moins {{ limit }} caracteres",
+     *      maxMessage = "la presentation doit faire au plus {{ limit }} caracteres"
+     * )
      */
     private $presentation;
 
     /**
      * @var \DateTime
-     *
      * @ORM\Column(name="createdAt", type="datetime")
      */
     private $createdAt;
 
     /**
      * @var string
-     *
      * @ORM\Column(name="universe", length=255)
      */
     private $universe;

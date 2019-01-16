@@ -1,7 +1,9 @@
 {% block jumbotron %}
-        <div class="jumbotron row" id="accueil">
-            <h2 class="text-center"> KAPSUL</h2>
-            <h3 class="text-center">Univers multiples</h3>
-            <h3 class="text-center">des revues</h3>
+        <div class="jumbotron" id="accueil">
+            <div id="navbar">
+                {% include '@CTSKapsBundle/_navbar.html.twig' %}
+            </div>
+            <div id="prez2"><h2 class="text-center">KAPSUL </h2></div>
+            <div id="prez3"><h2 class="text-center">MAGS, REVUES et BLOGS</h2></div>
         </div>
 {% endblock %}

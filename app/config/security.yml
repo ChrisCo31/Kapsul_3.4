@@ -4,8 +4,10 @@ security:
 
     # https://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
-        in_memory:
-            memory: ~
+        from_database:
+            entity:
+                class: CTS\KapsBundle\Entity\User
+                property: username
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -21,4 +23,19 @@ security:
             #http_basic: ~
 
             # https://symfony.com/doc/current/security/form_login_setup.html
-            #form_login: ~
+            form_login:
+                check_path: login
+
+            logout:
+                path:    /logout
+                target:    /
+    access_control:
+    # require ROLE_ADMIN for /admin*
+        - { path: ^/admin, roles: ROLE_ADMIN }
+    # require ROLE_USER for /member*
+        - { path: ^/member, roles: ROLE_USER }
+
+    encoders:
+        CTS\KapsBundle\Entity\User:
+            algorithm: bcrypt
+            cost: 12

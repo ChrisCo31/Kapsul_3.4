@@ -20,9 +20,9 @@
             {% for media in listMedia %}
                 <tr>
                     <td><h4><a href="{{ path('Front_oneMedia', {'id': media.id})}}">{{ media.name }}</a></h4></td>
-                    <td><h4><a href ="{{ path('Back_selector', {'id': media.id})}}" class="btn btn-primary btn-sm">Selecteurs</a><h4></td>
-                    <td><h4><a href ="{{ path('Back_scrap', {'id': media.id})}}" type="button" class="btn btn-primary btn-sm"> Scraper</a><h4></td>
-                    <td><h4><a href ="{{ path('Back_edit', {'id': media.id})}}" class="btn btn-primary btn-sm">Editer</a><h4></td>
+                    <td><h4><a href ="{{ path('Back_selector', {'id': media.id})}}" class="btn btn-warning ">Selecteurs</a><h4></td>
+                    <td><h4><a href ="{{ path('Back_scrap', {'id': media.id})}}" type="button" class="btn btn-warning "> Scraper</a><h4></td>
+                    <td><h4><a href ="{{ path('Back_edit', {'id': media.id})}}" class="btn btn-warning ">Editer</a><h4></td>
                 </tr>                                          
             {% endfor %}
             </tbody>

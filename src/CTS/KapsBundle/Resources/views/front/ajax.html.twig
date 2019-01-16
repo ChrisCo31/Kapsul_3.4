@@ -1,0 +1,20 @@
+<div class="well">
+    {% if results is defined %}
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th> Titre de l'article </th>
+                <th> Les premieres lignes</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for result in results %}
+                <tr>
+                    <td><h4><a href="{{ result.url }}">{{ result.title }}</a></h4></td>
+                    <td><p class="card-text"> {{ result.excerpt }}</p></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>

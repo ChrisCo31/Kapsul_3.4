@@ -15,8 +15,24 @@ class MediaRepository extends \Doctrine\ORM\EntityRepository
         $queryBuilder=$this->createQueryBuilder('m');
         $queryBuilder
             ->orderBy('m.createdAt', 'DESC')
-            ->setMaxResults(3);
+            ->setMaxResults(6);
             return $queryBuilder->getQuery()->getResult();
+    }
+
+    public function findUniverses()
+    {
+        $queryBuilder=$this->createQueryBuilder('m');
+        $queryBuilder
+            ->groupBy('m.universe');
+        return $queryBuilder->getQuery()->getResult();
+    }
+
+    public function sortByNameAZ()
+    {
+        $queryBuilder=$this->createQueryBuilder('m');
+        $queryBuilder
+            ->orderBy('m.name', 'ASC');
+        return $queryBuilder->getQuery()->getResult();
     }
 
 }

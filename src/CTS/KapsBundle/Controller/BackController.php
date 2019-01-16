@@ -23,14 +23,18 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security ;
 
 class BackController extends Controller
 {
     /**
      * @route("/admin", name="Back_admin")
+     * @Security("has_role('ROLE_ADMIN')")
      */
     public function indexAction(Request $request)
     {
+
         $em = $this->getDoctrine()->getManager();
         $listMedia = $em->getRepository('CTSKapsBundle:Media')->findAll();
         $media = new Media();
@@ -48,7 +52,7 @@ class BackController extends Controller
         return $this->render('@CTSKapsBundle/back/index.html.twig', ['form' => $form->createView(), 'listMedia' => $listMedia]);
     }
     /**
-     * @route("/selector/{id}", name="Back_selector")
+     * @route("/adminselector/{id}", name="Back_selector")
      */
     public function selectorAction(Request $request, $id)
     {
@@ -76,7 +80,7 @@ class BackController extends Controller
     }
 
     /**
-     * @route("/scrap/{id}", name="Back_scrap")
+     * @route("/adminscrap/{id}", name="Back_scrap")
      */
     public function scrapingAction(Request $request,$id)
 
@@ -92,13 +96,13 @@ class BackController extends Controller
         // 4. Persist results
 
         // 5. success message
-        $this->addFlash('success', 'Scraping réussi');
+        $this->addFlash('success', 'Le scraping est à jour pour ce média');
         // 6. Render twig file
         return $this->render('@CTSKapsBundle/back/scrap.html.twig');
 
     }
     /**
-     * @route("/edit/{id}", name="Back_edit")
+     * @route("/adminedit/{id}", name="Back_edit")
      */
     public function EditAction(Request $request,$id)
     {
@@ -120,32 +124,50 @@ class BackController extends Controller
              'media'=> $media
             ]);
     }
-
-
     /**
-     * @route("/connexion", name="Back_connexion")
+     * @Route("/admindelete/{id}", name="Back_delete")
      */
-    public function connectAction()
+    public function delete(Media $media, Request $request, $id)
     {
+        $em = $this->getDoctrine()->getManager();
+        $media = $em->getRepository('CTSKapsBundle:Media')->find($id);
+        $em->remove($media);
+        $em->flush();
+        $this->addFlash('success', 'Suppression réussie');
 
-        return $this->render('@CTSKapsBundle/back/connexion.html.twig');
+        return $this->redirectToRoute('Back_admin');
+    }
+    /**
+     * @Route("/member/{username}", name="Back_member")
+     */
+    public function accessMember()
+    {
+        return $this->render('@CTSKapsBundle/back/member.html.twig');
     }
 
     /**
-     * @route("/register", name="Back_register")
+     * @route("/login", name="login")
+     * @param AuthenticationUtils $authenticationUtils
+     * @return Response
      */
-    public function registerAction()
+    public function loginAction(AuthenticationUtils $authenticationUtils)
     {
+        $error = $authenticationUtils->getLastAuthenticationError();
+        $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('@CTSKapsBundle/back/register.html.twig');
+        return $this->render('@CTSKapsBundle/back/login.html.twig', [
+            'last_username' => $lastUsername,
+            'error' => $error
+        ]);
     }
 
     /**
-     * @route("/myspace", name="Back_mySpace")
+     * @route("/logout", name="logout")
      */
-    public function mySpaceAction()
+    public function logoutAction()
     {
 
-        return $this->render('@CTSKapsBundle/back/mySpace.html.twig');
+        return $this->redirectToRoute('Front_home');
     }
+
 }

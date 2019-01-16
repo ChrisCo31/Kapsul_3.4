@@ -26,7 +26,7 @@ class Picture
      *
      * @ORM\Column(name="src", type="string", length=255)
      */
-    private $src;
+    private $src ;
 
     /**
      * @var string
@@ -94,4 +94,3 @@ class Picture
         return $this->alt;
     }
 }
-

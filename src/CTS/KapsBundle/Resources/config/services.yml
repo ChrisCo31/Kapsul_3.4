@@ -2,4 +2,17 @@ services:
 
     cts_kaps.Scraping:
         class: CTS\KapsBundle\Services\Scraping
+        arguments: ["@doctrine.orm.entity_manager", "@cts_kaps.Formatting"]
+
+    twig.extension.text:
+        class: Twig_Extensions_Extension_Text
+        tags:
+        - { name: twig.extension }
+
+    cts_kaps.Paginator:
+        class: CTS\KapsBundle\Services\Paginator
         arguments: ["@doctrine.orm.entity_manager"]
+
+    cts_kaps.Formatting:
+        class: CTS\KapsBundle\Services\Formatting
+        

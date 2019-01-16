@@ -1,0 +1,32 @@
+{% block form %}
+
+    <div class="container">
+
+        <div class="row">
+
+            {{ form_start(form) }}
+            <div class="row">
+
+                <p> {{ form_label(form.username) }}
+                    {{ form_widget(form.username) }}
+                </p>
+            </div>
+            <div class="row">
+                <p>
+                    {{ form_label(form.email) }}
+                    {{ form_widget(form.email) }}
+                </p>
+            </div>
+            <div class="row">
+                <p>
+                    {{ form_label(form.password) }}
+                    {{ form_widget(form.password) }}
+                </p>
+            </div>
+
+            {{ form_rest(form) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock %}

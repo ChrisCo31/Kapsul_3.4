@@ -6,3 +6,6 @@ cts_kaps:
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
+
+logout:
+    path: /logout
