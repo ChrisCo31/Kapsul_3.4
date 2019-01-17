@@ -117,7 +117,7 @@ hr{
     max-width: 100%;
     margin-bottom: 20px;
 }
-/*........................Pagintation................*/
+/*........................Pagination................*/
 .paginate{
     padding: 30px 0;
     text-align: center;
@@ -148,6 +148,13 @@ hr{
     border-radius: 8px;
     color: #D1D2D4;
 }
+.alert-danger
+{
+    background-color: #DB1702;
+    border-color: #AE4A34;
+    border-radius: 8px;
+    color: #D1D2D4;
+}
 /*................... Button ...........................*/
 .btn-secondary.btn
 {
@@ -160,4 +167,16 @@ hr{
     color: #FFFFFF;
     background-color: #EC971f;
     border-color: #EC911A;
+}
+/*...........................register form...............*/
+.col-md-6
+ {
+     border-radius: 8px;
+     background-color: #FFFFFF;
+ }
+/*..........................Panel....................*/
+.panel-info >.panel-heading
+{
+    background-color: #FEA347;
+    color:#696969;
 }

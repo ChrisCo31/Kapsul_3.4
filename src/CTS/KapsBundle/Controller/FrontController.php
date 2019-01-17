@@ -124,6 +124,14 @@ class FrontController extends Controller
             'user'=> $user
         ]);
     }
+    /**
+     * @route("/reset", name="Front_reset")
+     */
+    public function resetAction()
+    {
+        return $this->render('@CTSKapsBundle/front/reset.html.twig');
+    }
+
 
     /**
      * @route("/contribute", name="Front_contribute")

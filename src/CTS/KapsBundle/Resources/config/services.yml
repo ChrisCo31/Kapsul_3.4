@@ -15,4 +15,11 @@ services:
 
     cts_kaps.Formatting:
         class: CTS\KapsBundle\Services\Formatting
-        
+
+    cts_kaps.SendEmail:
+        class: CTS\KapsBundle\Services\SendEmail
+        arguments: ["@mailer", "@templating"]
+
+    cts_kaps.ResetPassword:
+        class: CTS\KapsBundle\Services\ResetPAssword
+        arguments: ["@cts_kaps.sendEmail"]
